@@ -1,0 +1,231 @@
+.form-main{
+border-radius: 20px;
+background: #E5F1FF;
+padding:20px 60px;
+}
+.choices.is-disabled .choices__input{
+    background:#f1f1f1;   
+}
+.form-control:disabled, .form-control[readonly]{
+    padding: 5px 10px;
+    background:#f1f1f1;
+}
+.field-box {
+    border-radius: 8px;
+    border: 1px solid #0177FB;
+    background:#FFF;
+    padding:15px 20px;
+    width:32.3%;
+    position:relative;
+}
+.field-box span {
+    color: #000;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 3px;
+}
+.form-check-label{
+color: #1C1C1C;
+font-family: 'Inter';
+font-size: 13px;
+font-weight: 400;
+line-height: 20px;
+cursor: pointer;
+}
+.checkgap{
+    gap:16px;
+}
+.form-control{
+    padding:0;
+    height:auto;
+    border:none;
+    color: #1C1C1C;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: 'Inter';
+    font-weight: 400;
+}
+.form-check{margin-bottom:0;}
+.form-check-input:checked {
+    background-color:#1C1C1C;
+    border-color:#1C1C1C;
+}
+.choices__inner{position:relative;}
+.choices__inner:after{
+    content: url(../images/icons/ArrowLineUpDown.svg);
+    position:absolute;
+    right:0;
+    top:5px;
+}
+
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('../images/icons/ArrowLineUpDown.svg');
+    background-repeat: no-repeat;
+    background-position: right center;    
+}
+.submit-btn.field-box{
+    width:100%; gap:16px;
+}
+.quotationform .btn {
+    padding:8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;    
+    background: #000;
+    border:none;
+    border:solid 1px transparent;
+}
+.quotationform .btn-gray{
+background:rgba(0, 0, 0, 0.05);
+color:#000;
+border:solid 1px #888;
+}
+
+.quotationform .btn-primary{
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus{
+    box-shadow:none;
+    outline:none;
+}
+
+.fileupload.field-box{
+width:100%;
+position:relative;
+}
+.fileupload.field-box input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    opacity: 0;
+}
+
+.fileupload.field-box .form-label{
+  color: #1C1C1C;
+font-family: 'Inter';
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+margin-bottom:0;
+}
+
+.previewdetails {gap:15px;}
+.pdlfile-top{gap:8px;}
+.pdlfile-top figure{
+    display: flex;
+    width: 22px;
+    height: 22px;
+    padding:2px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    background:#E5ECF6;
+    margin:0;
+}
+.pdlfile-top figcaption{
+    margin:0;
+overflow: hidden;
+color: #000;
+text-overflow: ellipsis;
+white-space: nowrap;
+font-family:'Inter';
+font-size: 12px;
+font-weight: 400;
+line-height: 18px;
+}
+.viewpdf-top{gap:10px;}
+.viewpdf-top a{
+    border-radius: 5px;
+    background: #B4D7FF;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quotationform .renewal-btn{
+    width:100%;
+    padding:4px 0;
+    border-radius: 8px;
+    background: #B4D7FF;
+    color: #000;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-top:15px;
+    border:none;
+}
+.property-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.overview.form-main{
+    border-radius:0px 0px 20px 20px;    
+}
+.property-picture {
+    border-radius: 20px 20px 0px 0px;
+    height: 280px;
+    overflow: hidden;
+}
+
+.ourproperty .customerbox{gap:14.5px;}
+
+@media screen and (min-width:1920px) {
+.ourproperty .customerbox{gap:23.5px;}    
+}
+
+
+.remove-field {
+    background:#0177fb;
+    position: absolute;
+    top: 0px;
+    right: 6px;
+    padding: 0 10px;
+    border-radius: 0 0 5px 5px;
+    color:#fff !important;
+    cursor:pointer;
+}
+
+.modaldesign .field-box span.remove-field{display:block;}
+
+.addMoreButton,
+.add-field{
+    background:none;
+    border:solid 1px #000;
+    padding:5px;
+    font-size:14px;
+    color:#000;
+    cursor:pointer;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;        
+}
+.Viewmodal {
+   cursor: pointer;
+}
+.availableareaforlease{
+width: 45%;border-left: solid 1px #ddd;padding-left: 20px;
+}

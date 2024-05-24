@@ -1,0 +1,36 @@
+
+tbody, td, tfoot, th, thead, tr{
+    border:none;margin:0;
+    text-align: center;
+}
+.prospect-maintable .table{
+    border-collapse: separate;
+    border-spacing: 0 18px;
+}
+.prospect-maintable .table th{
+ padding:11px 0;
+color:#fff;
+font-family: 'Poppins';
+font-size: 15px;
+font-weight: 500;
+background: #0076FF;
+vertical-align: middle;
+}
+.prospect-maintable .table th:first-child{border-radius:8px 0 0 8px;text-align:right;}
+.prospect-maintable .table th:last-child{
+    border-radius:0 8px 8px 0px;text-align:left;    
+}
+.prospect-maintable .table tbody tr td:first-child{border-radius:8px 0 0 8px;text-align:right;}
+.prospect-maintable .table tbody tr td:last-child{
+    text-align:left;
+    border-radius:0 8px 8px 0px;    
+}
+.prospect-maintable .table tbody tr td{
+    background: #E5F1FF;
+    padding:11px 0;  
+    color: #000;
+    font-family:'Poppins';
+    font-size: 15px;
+    font-weight: 500;   
+    vertical-align: middle;
+}

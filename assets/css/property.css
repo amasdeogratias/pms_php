@@ -1,0 +1,102 @@
+.propertybox-main {
+    padding-top: 50px;
+    margin-bottom: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.property-pic{
+    position:relative;
+}
+.property-pic img{
+    width:100%;
+    border-radius:23px 23px 0 0;
+    max-height: 180px;
+    min-height: 180px;
+    height: 100%;
+    object-fit: cover;
+}
+.showfloor{
+    position:absolute;
+    top:0;
+    width:100%;
+}
+.showfloor span{
+border-radius: 20px 0px;
+background: #E5F1FF;
+color: #0177FB;
+font-size: 20px;
+font-weight: 500;
+line-height: normal;
+padding:10px 0;
+width: 130px;
+text-align:center;
+}
+.showfloor span.quantity{
+border-radius:0 20px;
+}
+.propertybox{
+    color:#000;
+    font-family: 'Poppins';
+    line-height: normal;
+    font-size: 14px;     
+    width:22.4%;
+    border-radius: 20px;
+    background: #E5F1FF;  
+    box-shadow: 0px 15px 35px 0px #3333331a;    
+}
+.propertybox:hover{
+    color:#000;
+}
+.propertybox ul{
+    padding:12px;
+    margin:0;
+    list-style:none;
+}
+.propertybox ul li{display:flex;}
+.propertybox ul li h4{
+    font-size: 13px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-right:5px;
+    width:52%;
+}
+.propertybox ul li h4 strong{
+    font-weight: 500;
+}
+.property-dteils {
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+}
+.property-dteils p{
+    margin:0; 
+    font-weight: 500;
+}
+.property-dteils span{
+ color: rgba(0, 0, 0, 0.50);
+font-size: 12px;
+font-weight: 500;
+}
+.property-dteils span.swimming{
+color: rgba(0, 0, 0, 0.40);
+font-size: 10px;
+}
+
+@media only screen and (max-width:1550px) {
+.propertybox ul li h4{width:50%;}
+.propertybox-main{
+    gap:20px;
+}
+.showfloor span{
+font-size:16px;
+padding:10px 0;
+width: 100px;
+text-align:center;
+}
+.propertybox{
+    width:31%;
+}
+
+}
