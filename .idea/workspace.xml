@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +36,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2guNxKIFxqGSnlIFEi7JcmElPnu" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,7 +68,7 @@
       <workItem from="1716549765900" duration="1741000" />
       <workItem from="1716551557833" duration="1156000" />
       <workItem from="1716553388084" duration="1869000" />
-      <workItem from="1716555296817" duration="302000" />
+      <workItem from="1716555296817" duration="968000" />
     </task>
     <servers />
   </component>
@@ -88,5 +92,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1716554506670" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1716556297399">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1716556297399" />
   </component>
 </project>

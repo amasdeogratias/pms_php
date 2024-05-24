@@ -24,7 +24,7 @@
                   <img src="assets/images/login-logo.svg" class="img-fluid" alt="login" />
                   <span>Estate360</span>
                </div>
-               <form class="login-form mt-3">
+               <form class="login-form mt-3" method="post">
                   <div class="login-formhide">
                      <div class="form-field mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Login</label>
