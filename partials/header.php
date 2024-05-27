@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['userid'])) {
+    header("Location: ../index.php?index=mustlogin");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -23,16 +23,24 @@
                <div class="loginlogo text-center">
                   <img src="assets/images/login-logo.svg" class="img-fluid" alt="login" />
                   <span>Estate360</span>
+                   <h4>
+                       <?php
+                       session_start();
+                       if(isset($_SESSION['message'])) {
+                           echo $_SESSION['message'];
+                           unset($_SESSION['message']);
+                       }?>
+                   </h4>
                </div>
-               <form class="login-form mt-3" method="post">
+               <form class="login-form mt-3" method="post" action="controllers/AuthController.php?f=login">
                   <div class="login-formhide">
                      <div class="form-field mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Login</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email or phone number">
+                        <input type="text" name="email_mobile" class="form-control" id="exampleFormControlInput1" placeholder="Email or phone number">
                      </div>
                      <div class="form-field mb-4">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
                         <span><img src="assets/images/icons/eye.svg" alt="eye" /></span>
                      </div>
                      <div class="d-flex justify-content-between forgot">
@@ -43,7 +51,7 @@
                         <a href="#" id="forgotPasswordLink">Forgot password?</a>
                      </div>
                      <div class="col-auto">
-                        <a href="views/select-company.php" class="btn btn-primary full-width">Login</a>
+                        <button type="submit" class="btn btn-primary full-width">Login</button>
                      </div>
                   </div>
 
