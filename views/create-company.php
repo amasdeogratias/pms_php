@@ -16,6 +16,13 @@ include '../partials/header.php';
                 </div>
             </header>
             <div class="quotationslist-main">
+                <h4>
+                    <?php
+                    if(isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                    }?>
+                </h4>
                 <!-- <h2>Individual Property Overview</h2> -->
                 <div class="form-main">
                 <form class="quotationform" method="post" id="createCompany">
@@ -118,9 +125,32 @@ include '../partials/header.php';
 
                   <div class="field-box d-flex justify-content-end submit-btn">
                      <button type="button" class="btn btn-gray">Reset</button>
-                     <button type="button" id="submit" class="btn btn-primary">Save</button>
+                     <button type="submit" id="submit" class="btn btn-primary">Save</button>
                   </div>
                </form>
                 </div>
             </div>
+
 <?php include ('../partials/footer.php'); ?>
+        <script>
+            $(document).ready( function () {
+                /*-------------    Submit  data using javascript	   --------------------*/
+                $("#submit").click(function(){
+                    var a = $("span").hasClass("invalid");
+
+                    if(a == true){
+                        swal({
+                            text: "Please Enter Valid Inputs",
+                            icon: "warning",
+                            dangerMode: true,
+                        });
+                        return false;
+                    }
+                    else{
+
+                        document.getElementById('createCompany').action ="../controllers/CompanyController.php?f=create";
+
+                    }
+                });
+            });
+        </script>
