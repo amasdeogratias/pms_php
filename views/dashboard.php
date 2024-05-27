@@ -9,7 +9,7 @@
             <img src="../assets/images/icons/plus-big.svg" alt="plus"> Create Company
           </a>
 
-          <a href="../index.php" class="logout">
+          <a href="../controllers/AuthController.php?f=Logout" class="logout">
             <img src="../assets/images/icons/logout.svg" alt="Logout" />
           </a>
           <a href="#" class="profile">

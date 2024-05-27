@@ -76,7 +76,7 @@ function fetchCompany()
     global $authenticate;
     if($_SESSION['userid']) {
         $company = $authenticate->getCompanies($_SESSION['userid']);
-        if($company == $_SESSION['company']) {
+        if($company[0]['CompanyName'] == $_SESSION['company']) {
             ?>
             <script>
                 window.location.href = "../views/dashboard.php"
