@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 error_reporting(0);
 
 class Auth
@@ -19,6 +19,11 @@ class Auth
         return $stmt;
     }
 
+    public function getCompanies($userId) {
+        $stmt = $this->con->prepare("SELECT CompanyName FROM usermaster WHERE Id = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function all()
     {

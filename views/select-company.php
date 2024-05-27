@@ -4,6 +4,12 @@ if (!isset($_SESSION['userid'])) {
     header("Location: ../index.php?index=mustlogin");
     exit();
 }
+require('../database/connection.php');
+require('../models/Auth.php');
+$database = new Database();
+$db = $database->connect();
+$authenticate = new Auth($db);
+$companies = $authenticate->getCompanies($_SESSION['userid']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,16 +31,26 @@ if (!isset($_SESSION['userid'])) {
          </div>
          <div class="loginright d-flex align-items-center justify-content-center">
             <div class="logincenter">
+                <h4>
+                    <?php
+                    if(isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                    }?>
+                </h4>
             <div class="form-main">
                <div class="loginlogo text-center">
                   <img src="../assets/images/login-logo.svg" class="img-fluid" alt="login"/>
                   <span>Estate360</span>     
                </div>
-               <form class="login-form">
+               <form class="login-form" action="../controllers/AuthController.php?f=fetchCompany" method="post">
                   <div class="field-box mt-4 mb-4">                        
                         <div class="d-flex justify-content-between">
                            <select id="selectcompany">
                               <option value="1" selected>Select Company</option>
+                               <?php foreach ($companies as $company): ?>
+                              <option value="<?php echo $company['CompanyName'] ?>"><?php echo $company['CompanyName'] ?></option>
+                               <?php endforeach; ?>
                               <option value="2">Company 1</option>
                               <option value="3">Company 2</option>
                               <option value="4">Company 3</option> 
@@ -43,7 +59,7 @@ if (!isset($_SESSION['userid'])) {
                      </div>
 
                   <div class="col-auto">
-                     <a href="dashboard.php" class="btn btn-primary full-width">Proceed</a>
+                     <button type="submit" class="btn btn-primary full-width">Proceed</button>
                      <!-- <button type="submit" class="btn btn-primary full-width">Login</button> -->
                   </div>
                </form>              

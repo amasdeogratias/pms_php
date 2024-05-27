@@ -27,12 +27,14 @@ function login()
                 $email                = $user['EmailId'];
                 $usertype             = $user['UserType'];
                 $mobile               = $user['MobileNo'];
+                $company               = $user['CompanyName'];
 
                 $_SESSION['userid']    = $userId;
                 $_SESSION['username']  = $name;
                 $_SESSION['email']     = $email;
                 $_SESSION['usertype']  = $usertype;
                 $_SESSION['mobile']    = $mobile;
+                $_SESSION['company']    = $company;
 
                 if(!empty($_POST['sync_data'])) {
                     ?>
@@ -66,6 +68,35 @@ function login()
         }
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
+    }
+}
+
+function fetchCompany()
+{
+    global $authenticate;
+    if($_SESSION['userid']) {
+        $company = $authenticate->getCompanies($_SESSION['userid']);
+        if($company == $_SESSION['company']) {
+            ?>
+            <script>
+                window.location.href = "../views/dashboard.php"
+            </script>
+            <?php
+        }else{
+            $_SESSION['message'] = '<div class="alert alert-danger">Incorrect company selected</div>';
+            ?>
+            <script>
+                window.history.back();
+            </script>
+            <?php
+        }
+    }else{
+        $_SESSION['message'] = '<div class="alert alert-danger">Login first then you can select the company</div>';
+        ?>
+        <script>
+            window.history.back();
+        </script>
+        <?php
     }
 }
 
