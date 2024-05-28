@@ -1,4 +1,5 @@
 <?php
+$subtitle = "Dashboard";
     include '../partials/header.php';
 ?>
     <div class="dashboard-main">

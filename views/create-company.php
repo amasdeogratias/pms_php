@@ -1,4 +1,5 @@
 <?php
+$subtitle = "Create Company";
 include '../partials/header.php';
 ?>
         <div class="dashboard-main">
