@@ -30,6 +30,25 @@ class Company
             return false;
         }
     }
+    public function addUser($userData)
+    {
+        if(!empty($userData) && is_array($userData)){
+            foreach($userData as $key => $value){
+                if(is_null($value) || $value == '')
+                    unset($userData[$key]);
+            }
+
+            $fields = implode(",", array_keys($userData));
+            $values = implode("','", array_values($userData));
+            $query = "INSERT INTO usermaster($fields) VALUES ('$values')";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 }
 
 
