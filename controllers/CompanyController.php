@@ -33,10 +33,44 @@ function create()
             'UpdatedDate' => null,
         );
 
+        $UserDetails = array();
+        for($i = 0; $i < count($_POST['userEmail']); $i++) {
+            $UserDetails = array(
+                    'UserName' => '',
+                    'EmailId' => str_replace("'", "''", $_POST['userEmail'][$i]),
+                    'MobileNo' => '',
+                    'Password' => $_POST['userPassword'][$i],
+                    'UserType' => str_replace("'", "''", $_POST['usertype'][$i]),
+                    'CompanyName' => str_replace("'", "''", $_POST['company_name']),
+                    'CreatedBy' => $_SESSION['username'],
+                    'CreatedDate' => date('Y-m-d H:i:s'),
+                    'UpdatedBy' => null,
+                    'UpdatedDate' => null,
+                );
+            $output[] = array_merge($UserDetails);
+        }
 
-
-//        echo json_encode($data);
+//        echo json_encode($output);
 //        exit;
+        foreach ($output as $val) {
+            $userData = array(
+                'UserName' => '',
+                'EmailId' => str_replace("'", "''", $val['EmailId']),
+                'MobileNo' => '',
+                'Password' => password_hash($val['Password'], PASSWORD_DEFAULT),
+                'UserType' => str_replace("'", "''", $val['UserType']),
+                'CompanyName' => str_replace("'", "''", $_POST['company_name']),
+                'CreatedBy' => $_SESSION['username'],
+                'CreatedDate' => date('Y-m-d H:i:s'),
+                'UpdatedBy' => null,
+                'UpdatedDate' => null,
+            );
+
+            $company->addUser($userData);
+        }
+//        echo json_encode($userData);
+//        exit;
+
         $add_response = $company->add($data);
         if($add_response) {
             $_SESSION['message']='<div class="alert alert-success">Company added successfully!</div>';?>
