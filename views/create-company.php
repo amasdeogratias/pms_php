@@ -107,21 +107,43 @@ include '../partials/header.php';
                         </div>
                      </div>
                   </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User type</th>
+                                <th>User Email Id</th>
+                                <th>User Password</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
 
                   <div class="d-flex gap-3 customerbox mb-3">
                      <div class="field-box">
-                        <span>Admin ID</span>  
+                        <span>User Type</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">                                                      
+                           <select class="form-control" name="usertype" id="usertype">
+                               <option value="Admin">Admin</option>
+                               <option value="Manager">Manager</option>
+                               <option value="User">User</option>
+                           </select>
+                        </div>
+                     </div>
+                      <div class="field-box">
+                        <span>User Email Id</span>
+                        <div class="d-flex justify-content-between">
+                           <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter user email">
+                            <small class="email_validate" style="color: red"></small>
                         </div>
                      </div>
                      <div class="field-box">
-                        <span>Admin Password</span>  
+                        <span>User Password</span>
                         <div class="d-flex justify-content-between">
-                           <input type="password" class="form-control" placeholder="Text">
+                           <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
                         </div>
                      </div>
-                  
+                      <button type="button" class="btn btn-info btn-sm" onclick="addUser()">Add</button>
                   </div>
 
                   <div class="field-box d-flex justify-content-end submit-btn">
@@ -154,4 +176,54 @@ include '../partials/header.php';
                     }
                 });
             });
+            const addedUsers = [];
+            function addUser() {
+                const usertype = document.getElementById('usertype').value.trim();
+                const userEmail = document.getElementById('user_email').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if ((usertype === '' || userEmail === '' || password ==='')) {
+                    alert("Please fill in all fields!");
+                    return; // Exit the function if a field is empty
+                }
+
+                //validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(userEmail)) {
+                    const valid_email = document.querySelector('.email_validate');
+                    valid_email.textContent="Invalid email format!";
+                    // alert("Invalid email format!");
+                    return;
+                }
+
+                // Check for duplicate user based on email only
+                if (addedUsers.includes(userEmail)) {
+                    alert("Duplicate email entry!");
+                    return;
+                }
+                    addedUsers.push(usertype)
+                    addedUsers.push(userEmail)
+                    addedUsers.push(password)
+
+                    const tableBody = document.getElementById('tbody');
+                    const newRow = document.createElement('tr');
+                    // newRow.setAttribute(border, 'none');
+                newRow.innerHTML = `
+                <td><input type="text" class="form-control" style="border: none;" name="usertype[]" id="alias" value="${usertype}"></td>
+                <td><input type="email"class="form-control" style="border: none;" name="userEmail[]" id="alias" value="${userEmail}"></td>
+                <td><input type="text" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="${password}"></td>
+                <td><span type="button" style="background-color: red; border-radius: 5px; padding: 2px; text-align:center; color:white" onclick="removeUser(this)">x</span></td>
+              `;
+
+                tableBody.appendChild(newRow);
+                document.getElementById('usertype').value = "";
+                document.getElementById('user_email').value = "";
+                document.getElementById('password').value = "";
+
+            }
+
+            function removeUser(button){
+                const row = button.closest('tr');
+                row.remove();
+            }
         </script>
