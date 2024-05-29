@@ -21,9 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/create-company.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/create-company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../payroll_sagera" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -95,7 +94,10 @@
       <workItem from="1716894173811" duration="1710000" />
       <workItem from="1716896144274" duration="1772000" />
       <workItem from="1716898015950" duration="1907000" />
-      <workItem from="1716900476636" duration="709000" />
+      <workItem from="1716900476636" duration="1839000" />
+      <workItem from="1716902367486" duration="75000" />
+      <workItem from="1716973305722" duration="174000" />
+      <workItem from="1716973567096" duration="1774000" />
     </task>
     <servers />
   </component>
@@ -119,6 +121,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1716554506670" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1716902441973">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1716902441972" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1716810293763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

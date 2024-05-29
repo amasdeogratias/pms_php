@@ -20,9 +20,11 @@ class Auth
     }
 
     public function getCompanies($userId) {
-        $stmt = $this->con->prepare("SELECT CompanyName FROM usermaster WHERE Id = ?");
-        $stmt->execute([$userId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->con->prepare("SELECT CompanyName FROM company GROUP BY CompanyName");
+//        $stmt->bindParam(':id', $userId, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
     }
 
     public function all()

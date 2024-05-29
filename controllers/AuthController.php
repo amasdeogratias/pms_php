@@ -75,21 +75,26 @@ function fetchCompany()
 {
     global $authenticate;
     if($_SESSION['userid']) {
-        $company = $authenticate->getCompanies($_SESSION['userid']);
-        if($company[0]['CompanyName'] == $_SESSION['company']) {
-            ?>
-            <script>
-                window.location.href = "../views/dashboard.php"
-            </script>
-            <?php
-        }else{
-            $_SESSION['message'] = '<div class="alert alert-danger">Incorrect company selected</div>';
-            ?>
-            <script>
-                window.history.back();
-            </script>
-            <?php
+        $companies = $authenticate->getCompanies($_SESSION['userid']);
+//        echo json_encode($_SESSION['company']);
+//        exit;
+        foreach($companies as $company){
+            if($company['CompanyName'] === $_SESSION['company']) {
+                ?>
+                <script>
+                    window.location.href = "../views/dashboard.php"
+                </script>
+                <?php
+            }else{
+                $_SESSION['message'] = '<div class="alert alert-danger">Incorrect company selected</div>';
+                ?>
+                <script>
+                    window.history.back();
+                </script>
+                <?php
+            }
         }
+
     }else{
         $_SESSION['message'] = '<div class="alert alert-danger">Login first then you can select the company</div>';
         ?>
