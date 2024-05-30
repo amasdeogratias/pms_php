@@ -34,39 +34,58 @@ function create()
         );
 
         $UserDetails = array();
-        for($i = 0; $i < count($_POST['userEmail']); $i++) {
-            $UserDetails = array(
+        $formDetails = array();
+        if (!empty($_POST['userEmail'])){
+            for($i = 0; $i < count($_POST['userEmail']); $i++) {
+                $UserDetails = array(
+                        'UserName' => '',
+                        'EmailId' => str_replace("'", "''", $_POST['userEmail'][$i]),
+                        'MobileNo' => '',
+                        'Password' => $_POST['userPassword'][$i],
+                        'UserType' => str_replace("'", "''", $_POST['userType'][$i]),
+                        'CompanyName' => str_replace("'", "''", $_POST['company_name']),
+                        'CreatedBy' => $_SESSION['username'],
+                        'CreatedDate' => date('Y-m-d H:i:s'),
+                        'UpdatedBy' => null,
+                        'UpdatedDate' => null,
+                    );
+                $output[] = array_merge($UserDetails);
+            }
+
+            //        echo json_encode($output);
+            //        exit;
+            foreach ($output as $val) {
+                $userData = array(
                     'UserName' => '',
-                    'EmailId' => str_replace("'", "''", $_POST['userEmail'][$i]),
+                    'EmailId' => str_replace("'", "''", $val['EmailId']),
                     'MobileNo' => '',
-                    'Password' => $_POST['userPassword'][$i],
-                    'UserType' => str_replace("'", "''", $_POST['usertype'][$i]),
+                    'Password' => password_hash($val['Password'], PASSWORD_DEFAULT),
+                    'UserType' => str_replace("'", "''", $val['UserType']),
                     'CompanyName' => str_replace("'", "''", $_POST['company_name']),
                     'CreatedBy' => $_SESSION['username'],
                     'CreatedDate' => date('Y-m-d H:i:s'),
                     'UpdatedBy' => null,
                     'UpdatedDate' => null,
                 );
-            $output[] = array_merge($UserDetails);
+
+                $company->addUser($userData);
+            }
         }
 
-//        echo json_encode($output);
-//        exit;
-        foreach ($output as $val) {
-            $userData = array(
+        if (!empty($_POST['user_email'])){
+            $formDetails= array(
                 'UserName' => '',
-                'EmailId' => str_replace("'", "''", $val['EmailId']),
+                'EmailId' => str_replace("'", "''", $_POST['user_email']),
                 'MobileNo' => '',
-                'Password' => password_hash($val['Password'], PASSWORD_DEFAULT),
-                'UserType' => str_replace("'", "''", $val['UserType']),
+                'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                'UserType' => str_replace("'", "''", $_POST['usertype']),
                 'CompanyName' => str_replace("'", "''", $_POST['company_name']),
                 'CreatedBy' => $_SESSION['username'],
                 'CreatedDate' => date('Y-m-d H:i:s'),
                 'UpdatedBy' => null,
                 'UpdatedDate' => null,
             );
-
-            $company->addUser($userData);
+            $company->addUser($formDetails);
         }
 //        echo json_encode($userData);
 //        exit;

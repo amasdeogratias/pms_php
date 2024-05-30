@@ -132,8 +132,8 @@ include '../partials/header.php';
                         <span>User Email Id</span>
                         <div class="d-flex justify-content-between">
                             <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter user email">
-                            <small class="email_validate" style="color: red"></small>
                         </div>
+                        <small class="email_validate" style="color: red"></small>
                     </div>
                     <div class="field-box">
                         <span>User Password</span>
@@ -214,7 +214,7 @@ include '../partials/header.php';
                 <td>
 					<div class="field-box" style="width: 100%;">
 						<span>User Type</span>
-						<input type="text" class="form-control" style="border: none;" name="usertype[]" id="alias" value="${usertype}"></td>
+						<input type="text" class="form-control" style="border: none;" name="userType[]" id="alias" value="${usertype}"></td>
 					</div>
 				<td>
 					<div class="field-box" style="width: 100%;">
