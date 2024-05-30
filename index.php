@@ -23,15 +23,15 @@
                <div class="loginlogo text-center">
                   <img src="assets/images/login-logo.svg" class="img-fluid" alt="login" />
                   <span>Estate360</span>
-                   <h4>
-                       <?php
-                       session_start();
-                       if(isset($_SESSION['message'])) {
-                           echo $_SESSION['message'];
-                           unset($_SESSION['message']);
-                       }?>
-                   </h4>
                </div>
+                <h6 class="text-center mt-3">
+                    <?php
+                    session_start();
+                    if(isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                    }?>
+                </h6>
                <form class="login-form mt-3" method="post" action="controllers/AuthController.php?f=login">
                   <div class="login-formhide">
                      <div class="form-field mb-3">
