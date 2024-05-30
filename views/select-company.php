@@ -9,7 +9,7 @@ require('../models/Auth.php');
 $database = new Database();
 $db = $database->connect();
 $authenticate = new Auth($db);
-$companies = $authenticate->getCompanies($_SESSION['userid']);
+$companies = $authenticate->getCompanies();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,14 +46,11 @@ $companies = $authenticate->getCompanies($_SESSION['userid']);
                <form class="login-form" action="../controllers/AuthController.php?f=fetchCompany" method="post">
                   <div class="field-box mt-4 mb-4">                        
                         <div class="d-flex justify-content-between">
-                           <select id="selectcompany">
+                           <select id="selectcompany" name="company_name">
                               <option value="1" selected>Select Company</option>
                                <?php foreach ($companies as $company): ?>
                               <option value="<?php echo $company['CompanyName'] ?>"><?php echo $company['CompanyName'] ?></option>
                                <?php endforeach; ?>
-                              <option value="2">Company 1</option>
-                              <option value="3">Company 2</option>
-                              <option value="4">Company 3</option> 
                            </select>
                         </div>
                      </div>
