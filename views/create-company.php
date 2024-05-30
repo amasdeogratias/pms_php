@@ -2,228 +2,259 @@
 $subtitle = "Create Company";
 include '../partials/header.php';
 ?>
-        <div class="dashboard-main">
-            <header class="d-flex justify-content-between align-items-center">
-                <div class="add-back d-flex align-items-center">
-                    <h1>Create Company</h1>
-                </div>
-                <div class="customer d-flex align-items-center">
-                    <a href="../controllers/AuthController.php?f=Logout" class="logout">
-                        <img src="../assets/images/icons/logout.svg" alt="Logout" />
-                    </a>
-                    <a href="#" class="profile">
-                        <img src="../assets/images/user-pic.jpg" alt="Profile" />
-                    </a>
-                </div>
-            </header>
-            <div class="quotationslist-main">
-                <h4>
-                    <?php
-                    if(isset($_SESSION['message'])) {
-                        echo $_SESSION['message'];
-                        unset($_SESSION['message']);
-                    }?>
-                </h4>
-                <!-- <h2>Individual Property Overview</h2> -->
-                <div class="form-main">
-                <form class="quotationform" method="post" id="createCompany">
-                  <div class="d-flex justify-content-between customerbox mb-3">
-                     <div class="field-box">
+<div class="dashboard-main">
+    <header class="d-flex justify-content-between align-items-center">
+        <div class="add-back d-flex align-items-center">
+            <h1>Create Company</h1>
+        </div>
+        <div class="customer d-flex align-items-center">
+            <a href="../controllers/AuthController.php?f=Logout" class="logout">
+                <img src="../assets/images/icons/logout.svg" alt="Logout" />
+            </a>
+            <a href="#" class="profile">
+                <img src="../assets/images/user-pic.jpg" alt="Profile" />
+            </a>
+        </div>
+    </header>
+    <div class="quotationslist-main">
+        <h4>
+            <?php
+            if(isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            }?>
+        </h4>
+        <!-- <h2>Individual Property Overview</h2> -->
+        <div class="form-main">
+            <form class="quotationform" method="post" id="createCompany">
+                <div class="d-flex justify-content-between customerbox mb-3">
+                    <div class="field-box">
                         <span>Company Name</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="company_name" id="company_name"  placeholder="Enter company name">
+                            <input type="text" class="form-control" name="company_name" id="company_name"  placeholder="Enter company name">
                         </div>
-                     </div>
-                     <div class="field-box">
-                        <span>Mailing Name</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Mailing Name</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="mailing_name" id="mailing_name" placeholder="Enter mailing name">
+                            <input type="text" class="form-control" name="mailing_name" id="mailing_name" placeholder="Enter mailing name">
                         </div>
-                     </div>                     
-                     <div class="field-box">
-                        <span>Address</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Address</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
+                            <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
                         </div>
-                     </div>                    
-                  </div>
-                  <div class="d-flex justify-content-between customerbox mb-3">
-                  <div class="field-box">
-                        <span>District</span>  
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between customerbox mb-3">
+                    <div class="field-box">
+                        <span>District</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="district" id="district" placeholder="Enter district">
+                            <input type="text" class="form-control" name="district" id="district" placeholder="Enter district">
                         </div>
-                     </div>
-                     <div class="field-box">
-                        <span>Country</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Country</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="country" id="country" placeholder="Enter country">
+                            <input type="text" class="form-control" name="country" id="country" placeholder="Enter country">
                         </div>
-                     </div>                     
-                     <div class="field-box">
-                        <span>Pincode</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Pincode</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Enter pincode">
+                            <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Enter pincode">
                         </div>
-                     </div>                    
-                  </div>
-                  <div class="d-flex justify-content-between customerbox mb-3">
-                     <div class="field-box">
-                        <span>Telephone No.</span>  
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between customerbox mb-3">
+                    <div class="field-box">
+                        <span>Telephone No.</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Enter telephone">
+                            <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Enter telephone">
                         </div>
-                     </div>
-                     <div class="field-box">
-                        <span>Mobile No.</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Mobile No.</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter mobile">
+                            <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter mobile">
                         </div>
-                     </div>
-                     <div class="field-box">
-                        <span>Fax No.</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Fax No.</span>
                         <div class="d-flex justify-content-between">
-                        <input type="text" class="form-control" name="fax" id="fax" placeholder="Enter fax">
+                            <input type="text" class="form-control" name="fax" id="fax" placeholder="Enter fax">
                         </div>
-                     </div>
-                  </div>
-                  <div class="d-flex justify-content-between customerbox mb-3">
-                     <div class="field-box">
-                        <span>Email Id</span>  
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between customerbox mb-3">
+                    <div class="field-box">
+                        <span>Email Id</span>
                         <div class="d-flex justify-content-between">
-                           <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                         </div>
-                     </div>
-                     <div class="field-box">
-                        <span>Website</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Website</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="website" id="website" placeholder="Enter website link">
+                            <input type="text" class="form-control" name="website" id="website" placeholder="Enter website link">
                         </div>
-                     </div>
-                     <div class="field-box">
-                        <span>Company Start Date</span>  
+                    </div>
+                    <div class="field-box">
+                        <span>Company Start Date</span>
                         <div class="d-flex justify-content-between">
-                           <input type="date" class="form-control" name="start_date" id="start_date" placeholder="Enter company start date">
+                            <input type="date" class="form-control" name="start_date" id="start_date" placeholder="Enter company start date">
                         </div>
-                     </div>
-                  </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>User type</th>
-                                <th>User Email Id</th>
-                                <th>User Password</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody"></tbody>
-                    </table>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th colspan="4" style="border-bottom-color: #dee2e6;border-bottom-width: 1px;font-weight:normal">Add User Details</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
 
-                  <div class="d-flex gap-3 customerbox mb-3">
-                     <div class="field-box">
+                <div class="d-flex gap-3 customerbox mb-3">
+                    <div class="field-box">
                         <span>User Type</span>
                         <div class="d-flex justify-content-between">
-                           <select class="form-control" name="usertype" id="usertype">
-                               <option value="Admin">Admin</option>
-                               <option value="Manager">Manager</option>
-                               <option value="User">User</option>
-                           </select>
+                            <select class="form-control" name="usertype" id="usertype">
+                                <option>Select</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Manager">Manager</option>
+                                <option value="User">User</option>
+                            </select>
                         </div>
-                     </div>
-                      <div class="field-box">
+                    </div>
+                    <div class="field-box">
                         <span>User Email Id</span>
                         <div class="d-flex justify-content-between">
-                           <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter user email">
+                            <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter user email">
                             <small class="email_validate" style="color: red"></small>
                         </div>
-                     </div>
-                     <div class="field-box">
+                    </div>
+                    <div class="field-box">
                         <span>User Password</span>
                         <div class="d-flex justify-content-between">
-                           <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
                         </div>
-                     </div>
-                      <button type="button" class="btn btn-info btn-sm" onclick="addUser()">Add</button>
-                  </div>
-
-                  <div class="field-box d-flex justify-content-end submit-btn">
-                     <button type="button" class="btn btn-gray">Reset</button>
-                     <button type="submit" id="submit" class="btn btn-primary">Save</button>
-                  </div>
-               </form>
+                    </div>
+                    <button type="button" class="btn-sm addUser" onclick="addUser()">+</button>
                 </div>
-            </div>
 
-<?php include ('../partials/footer.php'); ?>
-        <script>
-            $(document).ready( function () {
-                /*-------------    Submit  data using javascript	   --------------------*/
-                $("#submit").click(function(){
-                    var a = $("span").hasClass("invalid");
+                <div class="field-box d-flex justify-content-end submit-btn">
+                    <button type="button" class="btn btn-gray">Reset</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                    if(a == true){
-                        swal({
-                            text: "Please Enter Valid Inputs",
-                            icon: "warning",
-                            dangerMode: true,
-                        });
-                        return false;
-                    }
-                    else{
+    <?php include ('../partials/footer.php'); ?>
+    <script>
+        new SlimSelect({
+            select: "#usertype",
+        });
 
-                        document.getElementById('createCompany').action ="../controllers/CompanyController.php?f=create";
+        $(document).ready( function () {
+            /*-------------    Submit  data using javascript	   --------------------*/
+            $("#submit").click(function(){
+                var a = $("span").hasClass("invalid");
 
-                    }
-                });
+                if(a == true){
+                    swal({
+                        text: "Please Enter Valid Inputs",
+                        icon: "warning",
+                        dangerMode: true,
+                    });
+                    return false;
+                }
+                else{
+
+                    document.getElementById('createCompany').action ="../controllers/CompanyController.php?f=create";
+
+                }
             });
-            const addedUsers = [];
-            function addUser() {
-                const usertype = document.getElementById('usertype').value.trim();
-                const userEmail = document.getElementById('user_email').value.trim();
-                const password = document.getElementById('password').value.trim();
+        });
+        const addedUsers = [];
+        function addUser() {
+            const usertype = document.getElementById('usertype').value.trim();
+            const userEmail = document.getElementById('user_email').value.trim();
+            const password = document.getElementById('password').value.trim();
 
-                if ((usertype === '' || userEmail === '' || password ==='')) {
-                    alert("Please fill in all fields!");
-                    return; // Exit the function if a field is empty
-                }
+            if ((usertype === '' || userEmail === '' || password ==='')) {
+                alert("Please fill in all fields!");
+                return; // Exit the function if a field is empty
+            }
 
-                //validate email
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(userEmail)) {
-                    const valid_email = document.querySelector('.email_validate');
-                    valid_email.textContent="Invalid email format!";
-                    // alert("Invalid email format!");
-                    return;
-                }
+            //validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userEmail)) {
+                const valid_email = document.querySelector('.email_validate');
+                valid_email.textContent="Invalid email format!";
+                // alert("Invalid email format!");
+                return;
+            }
 
-                // Check for duplicate user based on email only
-                if (addedUsers.includes(userEmail)) {
-                    alert("Duplicate email entry!");
-                    return;
-                }
-                    addedUsers.push(usertype)
-                    addedUsers.push(userEmail)
-                    addedUsers.push(password)
+            // Check for duplicate user based on email only
+            if (addedUsers.includes(userEmail)) {
+                alert("Duplicate email entry!");
+                return;
+            }
+            addedUsers.push(usertype)
+            addedUsers.push(userEmail)
+            addedUsers.push(password)
 
-                    const tableBody = document.getElementById('tbody');
-                    const newRow = document.createElement('tr');
-                    // newRow.setAttribute(border, 'none');
-                newRow.innerHTML = `
-                <td><input type="text" class="form-control" style="border: none;" name="usertype[]" id="alias" value="${usertype}"></td>
-                <td><input type="email"class="form-control" style="border: none;" name="userEmail[]" id="alias" value="${userEmail}"></td>
-                <td><input type="text" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="${password}"></td>
-                <td><span type="button" style="background-color: red; border-radius: 5px; padding: 2px; text-align:center; color:white" onclick="removeUser(this)">x</span></td>
+            const tableBody = document.getElementById('tbody');
+            const newRow = document.createElement('tr');
+            // newRow.setAttribute(border, 'none');
+            newRow.innerHTML = `
+                <td>
+					<div class="field-box" style="width: 100%;">
+						<span>User Type</span>
+						<input type="text" class="form-control" style="border: none;" name="usertype[]" id="alias" value="${usertype}"></td>
+					</div>
+				<td>
+					<div class="field-box" style="width: 100%;">
+						<span>User Email Id</span>
+						<input type="email"class="form-control" style="border: none;" name="userEmail[]" id="alias" value="${userEmail}">
+					</div>
+				</td>
+                <td>
+					<div class="field-box" style="width: 100%;">
+						<span>User Password</span>
+						<input type="text" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="${password}">
+					</div>
+				</td>
+                <td><span type="button" class="btn-sm addUser" onclick="removeUser(this)" style="width:100%;height:100%">x</span></td>
               `;
 
-                tableBody.appendChild(newRow);
-                document.getElementById('usertype').value = "";
-                document.getElementById('user_email').value = "";
-                document.getElementById('password').value = "";
+            tableBody.appendChild(newRow);
+            document.getElementById('usertype').value = "";
+            document.getElementById('user_email').value = "";
+            document.getElementById('password').value = "";
 
-            }
+        }
 
-            function removeUser(button){
-                const row = button.closest('tr');
-                row.remove();
-            }
-        </script>
+        function removeUser(button){
+            const row = button.closest('tr');
+            row.remove();
+        }
+    </script>
+
+    <style>
+        .addUser{
+            background: none;
+            border: solid 1px #000;
+            font-size: 14px;
+            color: #000;
+            cursor: pointer;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>

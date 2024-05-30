@@ -19,7 +19,7 @@ class Auth
         return $stmt;
     }
 
-    public function getCompanies($userId) {
+    public function getCompanies() {
         $stmt = $this->con->prepare("SELECT CompanyName FROM company GROUP BY CompanyName");
 //        $stmt->bindParam(':id', $userId, PDO::PARAM_STR);
         $stmt->execute();
