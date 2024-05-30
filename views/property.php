@@ -1,4 +1,5 @@
 <?php
+$subtitle = "Prospect Management";
 include '../partials/header.php';
 ?>
       <div class="dashboard-main">

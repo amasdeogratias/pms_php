@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>Estate 360 | Quotation List</title>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="assest/css/bootstrap.min.css" type="text/css" />
-   <link rel="stylesheet" href="assest/css/style.css" type="text/css" />
-   <link rel="stylesheet" href="assest/css/quotationslist.css" type="text/css" />
-</head>
-
-<body>
-   <div class="d-flex justify-content-between">
-      <?php include 'assest/include/sidebar.php'; ?>
+<?php
+$subtitle = "Quotation List";
+include '../partials/header.php';
+?>
       <div class="dashboard-main">
          <header class="d-flex justify-content-between align-items-center">
             <h1>Quotation List</h1>
             <div class="customer d-flex align-items-center">
                <a href="raise-quotation.php" class="btnprospect">
-                  <img src="assest/images/icons/plus-big.svg" alt="plus"> Add Quotations</a>
+                  <img src="../assets/images/icons/plus-big.svg" alt="plus"> Add Quotations</a>
 
                <a href="index.php" class="logout">
-                  <img src="assest/images/icons/logout.svg" alt="Logout" />
+                  <img src="../assets/images/icons/logout.svg" alt="Logout" />
                </a>
                <a href="#" class="profile">
-                  <img src="assest/images/user-pic.jpg" alt="Profile" />
+                  <img src="../assets/images/user-pic.jpg" alt="Profile" />
                </a>
             </div>
          </header>
@@ -37,18 +23,18 @@
                <div class="leftbarfilter">
                   <!-- <a href="raise-questions.php" class="addnew"><img src="assest/images/icons/plus.svg" class="img-fluid" alt="plus" /></a> -->
                   <div class="filter-dropdown">
-                     <a href="#" class="filter-icon"><img src="assest/images/icons/filter.svg" class="img-fluid" alt="filter" /></a>
+                     <a href="#" class="filter-icon"><img src="../assets/images/icons/filter.svg" class="img-fluid" alt="filter" /></a>
                      <div class="dropdown-content" id="filterDropdown">
                         <label class="dropdown-item"><input type="checkbox" class="filter-checkbox" value="Office Type"> Office Type</label>
                         <label class="dropdown-item"><input type="checkbox" class="filter-checkbox" value="Renewal"> Renewal</label>
                         <!-- Add more options as needed -->
                      </div>
                   </div>
-                  <a href="#" class="updown"><img src="assest/images/icons/updown.svg" class="img-fluid" alt="updown" /></a>
-                  <a href="#" class="morenow"><img src="assest/images/icons/more.svg" class="img-fluid" alt="more" /></a>
+                  <a href="#" class="updown"><img src="../assets/images/icons/updown.svg" class="img-fluid" alt="updown" /></a>
+                  <a href="#" class="morenow"><img src="../assets/images/icons/more.svg" class="img-fluid" alt="more" /></a>
                </div>
                <div class="search-bar">
-                  <span><img src="assest/images/icons/search.svg" class="search-icon" alt="Search"></span>
+                  <span><img src="../assets/images/icons/search.svg" class="search-icon" alt="Search"></span>
                   <input type="text" class="form-control" id="searchInput" placeholder="Search">
                </div>
             </div>
@@ -62,7 +48,7 @@
                      <th scope="col">Renewal</th>
                      <th scope="col">Rate Per Sq.fit / Units</th>
                      <th scope="col">Total Amount</th>
-                     <th scope="col"><img src="assest/images/icons/calender.svg" class="img-fluid" alt="calender" /> Date</th>
+                     <th scope="col"><img src="../assets/images/icons/calender.svg" class="img-fluid" alt="calender" /> Date</th>
                      <th scope="col">Mobile Number</th>
                      <th width="40" style="text-align:center;">Action</th>
                   </tr>
@@ -93,8 +79,8 @@
                            </a>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
                               <!-- <li><a class="dropdown-item" href="#"><img src="assest/images/icons/eye.svg" class="img-fluid" alt="eye" /> View</a></li> -->
-                              <li><a class="dropdown-item" href="raise-questions.php"><img src="assest/images/icons/edit-pen.svg" class="img-fluid" alt="edit" /> Edit</a></li>
-                              <li><a class="dropdown-item" href="#"><img src="assest/images/icons/trash.svg" class="img-fluid" alt="trash" /> Delete</a></li>
+                              <li><a class="dropdown-item" href="raise-questions.php"><img src="../assets/images/icons/edit-pen.svg" class="img-fluid" alt="edit" /> Edit</a></li>
+                              <li><a class="dropdown-item" href="#"><img src="../assets/images/icons/trash.svg" class="img-fluid" alt="trash" /> Delete</a></li>
                            </ul>
                         </div>
                      </td>
@@ -122,8 +108,8 @@
                               ...
                            </a>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                              <li><a class="dropdown-item" href="raise-questions.php"><img src="assest/images/icons/edit-pen.svg" class="img-fluid" alt="edit" /> Edit</a></li>
-                              <li><a class="dropdown-item" href="#"><img src="assest/images/icons/trash.svg" class="img-fluid" alt="trash" /> Delete</a></li>
+                              <li><a class="dropdown-item" href="raise-questions.php"><img src="../assets/images/icons/edit-pen.svg" class="img-fluid" alt="edit" /> Edit</a></li>
+                              <li><a class="dropdown-item" href="#"><img src="../assets/images/icons/trash.svg" class="img-fluid" alt="trash" /> Delete</a></li>
                            </ul>
                         </div>
                      </td>
@@ -150,8 +136,8 @@
                               ...
                            </a>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                              <li><a class="dropdown-item" href="raise-questions.php"><img src="assest/images/icons/edit-pen.svg" class="img-fluid" alt="edit" /> Edit</a></li>
-                              <li><a class="dropdown-item" href="#"><img src="assest/images/icons/trash.svg" class="img-fluid" alt="trash" /> Delete</a></li>
+                              <li><a class="dropdown-item" href="raise-questions.php"><img src="../assets/images/icons/edit-pen.svg" class="img-fluid" alt="edit" /> Edit</a></li>
+                              <li><a class="dropdown-item" href="#"><img src="../assets/images/icons/trash.svg" class="img-fluid" alt="trash" /> Delete</a></li>
                            </ul>
                         </div>
                      </td>
@@ -160,9 +146,7 @@
             </table>
          </div>
       </div>
-      <script src="assest/js/jquery-3.7.1.min.js"></script>
-      <script src="assest/js/bootstrap.bundle.min.js"></script>
-      <script src="assest/js/comon.js"></script>
+<?php include ('../partials/footer.php'); ?>
       <script>
          $(document).ready(function() {
             // Select/deselect all checkboxes

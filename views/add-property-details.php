@@ -1,4 +1,5 @@
 <?php
+$subtitle = "Add Property Details";
 include '../partials/header.php';
 ?>
       <div class="dashboard-main">

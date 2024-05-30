@@ -23,6 +23,9 @@ if (!isset($_SESSION['userid'])) {
     <link rel="stylesheet" href="../assets/css/slimselect.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/select.min.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/property.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/quotationslist.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/raise-questions.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/prospect-list.css" type="text/css" />
 </head>
 
 <body>
