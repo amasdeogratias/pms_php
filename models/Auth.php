@@ -13,7 +13,7 @@ class Auth
 
     public function login($email)
     {
-        $query = "SELECT * FROM usermaster WHERE EmailId = '$email' OR MobileNo='$email'";
+        $query = "SELECT * FROM usermaster WHERE EmailId = '$email' OR UserName='$email'";
         $stmt = $this->con->prepare($query);
         $stmt->execute();
         return $stmt;

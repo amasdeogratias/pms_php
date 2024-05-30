@@ -12,7 +12,7 @@ function login()
     global $authenticate;
     try {
 
-        $email = str_replace("'", "\'", $_POST['email_mobile']);
+        $email = str_replace("'", "\'", $_POST['username_or_email']);
         $password = str_replace("'", "\'", $_POST['password']);
 
         $response = $authenticate->login($email);

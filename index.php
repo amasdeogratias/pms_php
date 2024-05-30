@@ -36,7 +36,7 @@
                   <div class="login-formhide">
                      <div class="form-field mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Login</label>
-                        <input type="text" name="email_mobile" class="form-control" id="exampleFormControlInput1" placeholder="Email or phone number">
+                        <input type="text" name="username_or_email" class="form-control" id="exampleFormControlInput1" placeholder="Email or phone number">
                      </div>
                      <div class="form-field mb-4">
                         <label for="password" class="form-label">Password</label>
