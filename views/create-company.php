@@ -31,7 +31,7 @@ include '../partials/header.php';
                     <div class="field-box">
                         <span>Company Name</span>
                         <div class="d-flex justify-content-between">
-                            <input type="text" class="form-control" name="company_name" id="company_name"  placeholder="Enter company name">
+                            <input type="text" class="form-control" name="company_name" id="company_name"  placeholder="Enter company name" required>
                         </div>
                     </div>
                     <div class="field-box">
@@ -91,8 +91,9 @@ include '../partials/header.php';
                     <div class="field-box">
                         <span>Email Id</span>
                         <div class="d-flex justify-content-between">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
                         </div>
+                        <small class="email_validate" style="color: red"></small>
                     </div>
                     <div class="field-box">
                         <span>Website</span>
@@ -129,11 +130,10 @@ include '../partials/header.php';
                         </div>
                     </div>
                     <div class="field-box">
-                        <span>User Email Id</span>
+                        <span>User Email/User Name</span>
                         <div class="d-flex justify-content-between">
-                            <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter user email">
+                            <input type="text" class="form-control" name="username_or_email" id="username_or_email" placeholder="Enter username or username">
                         </div>
-                        <small class="email_validate" style="color: red"></small>
                     </div>
                     <div class="field-box">
                         <span>User Password</span>
@@ -181,7 +181,7 @@ include '../partials/header.php';
         const addedUsers = [];
         function addUser() {
             const usertype = document.getElementById('usertype').value.trim();
-            const userEmail = document.getElementById('user_email').value.trim();
+            const userEmail = document.getElementById('username_or_email').value.trim();
             const password = document.getElementById('password').value.trim();
 
             if ((usertype === '' || userEmail === '' || password ==='')) {
@@ -190,13 +190,13 @@ include '../partials/header.php';
             }
 
             //validate email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(userEmail)) {
-                const valid_email = document.querySelector('.email_validate');
-                valid_email.textContent="Invalid email format!";
-                // alert("Invalid email format!");
-                return;
-            }
+            // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // if (!emailRegex.test(userEmail)) {
+            //     const valid_email = document.querySelector('.email_validate');
+            //     valid_email.textContent="Invalid email format!";
+            //     // alert("Invalid email format!");
+            //     return;
+            // }
 
             // Check for duplicate user based on email only
             if (addedUsers.includes(userEmail)) {
@@ -219,13 +219,13 @@ include '../partials/header.php';
 				<td>
 					<div class="field-box" style="width: 100%;">
 						<span>User Email Id</span>
-						<input type="email"class="form-control" style="border: none;" name="userEmail[]" id="alias" value="${userEmail}">
+						<input type="text"class="form-control" style="border: none;" name="userNameOrEmail[]" id="alias" value="${userEmail}">
 					</div>
 				</td>
                 <td>
 					<div class="field-box" style="width: 100%;">
 						<span>User Password</span>
-						<input type="text" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="${password}">
+						<input type="password" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="${password}">
 					</div>
 				</td>
                 <td><span type="button" class="btn-sm addUser" onclick="removeUser(this)" style="width:100%;height:100%">x</span></td>
@@ -233,7 +233,7 @@ include '../partials/header.php';
 
             tableBody.appendChild(newRow);
             document.getElementById('usertype').value = "";
-            document.getElementById('user_email').value = "";
+            document.getElementById('username_or_email').value = "";
             document.getElementById('password').value = "";
 
         }

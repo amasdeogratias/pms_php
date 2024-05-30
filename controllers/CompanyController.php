@@ -35,11 +35,15 @@ function create()
 
         $UserDetails = array();
         $formDetails = array();
-        if (!empty($_POST['userEmail'])){
-            for($i = 0; $i < count($_POST['userEmail']); $i++) {
+        if (!empty($_POST['userNameOrEmail'])){
+            for($i = 0; $i < count($_POST['userNameOrEmail']); $i++) {
+                $userInput = $_POST['userNameOrEmail'][$i];
+
+                // Validate the input (optional, but recommended)
+                $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
                 $UserDetails = array(
-                        'UserName' => '',
-                        'EmailId' => str_replace("'", "''", $_POST['userEmail'][$i]),
+                        'UserName' => !$isValidEmail ? $userInput : NULL,
+                        'EmailId' =>  $isValidEmail ? $userInput : NULL,
                         'MobileNo' => '',
                         'Password' => $_POST['userPassword'][$i],
                         'UserType' => str_replace("'", "''", $_POST['userType'][$i]),
@@ -56,7 +60,7 @@ function create()
             //        exit;
             foreach ($output as $val) {
                 $userData = array(
-                    'UserName' => '',
+                    'UserName' => str_replace("'", "''", $val['UserName']),
                     'EmailId' => str_replace("'", "''", $val['EmailId']),
                     'MobileNo' => '',
                     'Password' => password_hash($val['Password'], PASSWORD_DEFAULT),
@@ -72,10 +76,14 @@ function create()
             }
         }
 
-        if (!empty($_POST['user_email'])){
+        if (!empty($_POST['username_or_email'])){
+            $userInput = $_POST['username_or_email'];
+
+            // Validate the input (optional, but recommended)
+            $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
             $formDetails= array(
-                'UserName' => '',
-                'EmailId' => str_replace("'", "''", $_POST['user_email']),
+                'UserName' => !$isValidEmail ? $userInput : NULL,
+                'EmailId' => $isValidEmail ? $userInput : NULL,
                 'MobileNo' => '',
                 'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 'UserType' => str_replace("'", "''", $_POST['usertype']),
