@@ -10,6 +10,11 @@
    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 </head>
 
 <body>
@@ -27,16 +32,35 @@
                 <h6 class="text-center mt-3">
                     <?php
                     session_start();
-                    if(isset($_SESSION['message'])) {
-                        echo $_SESSION['message'];
+                    if (isset($_SESSION['message'])) {
+                        if ($_SESSION['message'] == 'password_error') {
+                            echo '<script>
+                                swal({
+                                    title: "Error!",
+                                    text: "Incorrect password. Please try again.",
+                                    icon: "error",
+                                    confirmButtonText: "OK"
+                                });
+                            </script>';
+                        } elseif ($_SESSION['message'] == 'username_error') {
+                            echo '<script>
+                            swal({
+                                title: "Error!",
+                                text: "Incorrect username or password",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            });
+                        </script>';
+                        }
                         unset($_SESSION['message']);
-                    }?>
+                    }
+                    ?>
                 </h6>
                <form class="login-form mt-3" method="post" action="controllers/AuthController.php?f=login">
                   <div class="login-formhide">
                      <div class="form-field mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Login</label>
-                        <input type="text" name="username_or_email" class="form-control" id="exampleFormControlInput1" placeholder="Email or phone number">
+                        <input type="text" name="username_or_email" class="form-control" id="exampleFormControlInput1" placeholder="Email or username">
                      </div>
                      <div class="form-field mb-4">
                         <label for="password" class="form-label">Password</label>

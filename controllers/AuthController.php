@@ -51,7 +51,7 @@ function login()
                 }
 
             } else {
-                $_SESSION['message'] = '<div class="alert alert-danger">Incorrect username or password</div>';
+                $_SESSION['message'] = 'password_error';
                 ?>
                 <script>
                     window.history.back();
@@ -59,7 +59,7 @@ function login()
                 <?php
             }
         } else {
-            $_SESSION['message'] = '<div class="alert alert-danger">Incorrect username or password</div>';
+            $_SESSION['message'] = 'username_error';
             ?>
             <script>
                 window.history.back();
