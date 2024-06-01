@@ -1,6 +1,15 @@
 <?php
+error_reporting(E_ALL);
 $subtitle = "Add Property Details";
 include '../partials/header.php';
+include '../database/connection.php';
+include '../models/Property.php';
+
+$database = new Database();
+$db = $database->connect();
+
+$property = new Property($db);
+
 ?>
       <div class="dashboard-main">
          <header class="d-flex justify-content-between align-items-center">
@@ -9,7 +18,7 @@ include '../partials/header.php';
                <h1>Add Property Details</h1>
             </div>
             <div class="customer d-flex align-items-center">
-               <a href="index.php" class="logout">
+               <a href="../controllers/AuthController.php?f=Logout" class="logout">
                   <img src="../assets/images/icons/logout.svg" alt="Logout" />
                </a>
                <a href="#" class="profile">
@@ -20,26 +29,26 @@ include '../partials/header.php';
          <div class="quotationslist-main">
             
             <div class="form-main ourproperty">
-               <form class="quotationform">
+               <form class="quotationform" method="post" id="addProperty">
                   <div class="d-flex justify-content-between customerbox mb-3">
 
                      <div class="field-box">
                         <span>Property Type</span>
                         <div class="d-flex checkgap justify-content-between">
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Residential" onclick="uncheckOther(this)">
+                              <input class="form-check-input" type="checkbox" name="property_type" id="Residential" value="Residential" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="Residential">
                                  Residential
                               </label>
                            </div>
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Commercial" onclick="uncheckOther(this)">
+                              <input class="form-check-input" type="checkbox" name="property_type" id="Commercial" value="Commercial" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="Commercial">
                                  Commercial
                               </label>
                            </div>
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Both" onclick="uncheckOther(this)">
+                              <input class="form-check-input" type="checkbox" name="property_type" id="Both" value="Both" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="Both">
                                  Both
                               </label>
@@ -50,19 +59,14 @@ include '../partials/header.php';
                      <div class="field-box">
                         <span>Type of Property</span>
                         <div class="d-flex justify-content-between">
-                           <select id="choices-multiple-remove-button" placeholder="Select" multiple>
-                              <option value="Office">Office</option>
-                              <option value="Showroom">Showroom</option>
-                              <option value="Godown">Godown</option>
-                              <option value="Room">Room</option>
-                              <option value="Other">Other</option>
+                           <select class="form-control choices-multiple-remove-buttons" name="types_of_property" id="types_of_property" multiple>
                            </select>
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Name of Property</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input class="form-control" type="text" name="property_name" id="property_name" placeholder="Enter property name">
                         </div>
                      </div>
                   </div>
@@ -71,20 +75,20 @@ include '../partials/header.php';
                      <div class="field-box">
                         <span>Address/Location</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="text" class="form-control" name="address_location" id="address_location" placeholder="Enter address/location">
                         </div>
                      </div>
 
                      <div class="field-box">
                         <span>Total Area</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="number" class="form-control" name="total_area" id="total_area" placeholder="Enter total area">
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Floor/Units</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="number" class="form-control" name="floor_or_units" id="floor_or_units" placeholder="Enter floor/units">
                         </div>
                      </div>
                   </div>
@@ -420,3 +424,33 @@ include '../partials/header.php';
 
 
 <?php include ('../partials/footer.php'); ?>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+    $(document).ready(function (){
+        $('input[name="property_type"]').on('change', function (){
+            $('input[name="property_type"]').not(this).prop('checked', false);
+            let propertyType = $(this).val();
+
+            console.log(propertyType)
+            $.ajax({
+                url: '../controllers/PropertyController.php?f=getPropertyType',
+                type: 'POST',
+                data: { property_type: propertyType },
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response)
+                    $('#types_of_property').empty();
+                    $.each(response, function(index, value) {
+                        // console.log("Appending option:", value.TypeOfProperty);
+                        $('#types_of_property').append('<option value="' + value.Id + '">' + value.TypeOfProperty + '</option>');
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("AJAX error:", textStatus, errorThrown);
+                }
+
+            })
+        });
+    });
+</script>
