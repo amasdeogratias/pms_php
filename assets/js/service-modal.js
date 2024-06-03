@@ -1,6 +1,6 @@
 // open modal Amenities
 $(document).ready(function () {
-    $("#flexSwitchCheckDefault1").click(function () {
+    $("#amenities").click(function () {
       // Toggle the modal
       $("#myModal1").modal("toggle");
     });
@@ -10,7 +10,7 @@ $(document).ready(function () {
       $(".modal-backdrop").hide();
     });
   
-    $("#flexSwitchCheck").click(function () {
+    $("#common_area").click(function () {
       // Toggle the modal
       $("#myModal3").modal("toggle");
     });
@@ -76,6 +76,7 @@ $(document).ready(function() {
    // Event delegation for removing fields
    $(document).on('click', '.remove-field', function() {
       $(this).closest('.field-box').remove();
+       updateAnemitiesValue();
    });
 
    // Event listener for the "Add More" button
@@ -112,5 +113,16 @@ $(document).ready(function() {
       field.appendChild(flexContainer);
 
       container.append(field); // Append the new field to the container
+       
+       //add event listener to the input field
+       input.addEventListener('input',updateAnemitiesValue);
    }
+
+    function updateAnemitiesValue() {
+        const allInputs = document.querySelectorAll('.services .form-control');
+        const values = Array.from(allInputs).map(input => input.value).join(', ');
+        const checkbox = document.getElementById('amenities');
+        checkbox.value = values;
+        document.getElementById('label_amenity').textContent = (values);
+    }
 });
