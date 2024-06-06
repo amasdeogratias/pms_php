@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+error_reporting(0);
 $subtitle = "Add Property Details";
 include '../partials/header.php';
 include '../database/connection.php';
@@ -27,9 +27,15 @@ $property = new Property($db);
             </div>
          </header>
          <div class="quotationslist-main">
-            
+             <h4>
+                 <?php
+                 if(isset($_SESSION['message'])) {
+                     echo $_SESSION['message'];
+                     unset($_SESSION['message']);
+                 }?>
+             </h4>
             <div class="form-main ourproperty">
-               <form class="quotationform" method="post" id="addProperty">
+               <form class="quotationform" method="post" id="addProperty" enctype="multipart/form-data">
                   <div class="d-flex justify-content-between customerbox mb-3">
 
                      <div class="field-box">
@@ -100,8 +106,8 @@ $property = new Property($db);
                               </div></span>
                         <div class="d-flex justify-content-between">
                            <div class="form-check form-switch">                             
-                              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1">
-                              <label class="form-check-label" for="flexSwitchCheckDefault1">(Games Room, Gym, Conference Room, Cafeteria, Cinema Room)</label>
+                              <input class="form-check-input" type="checkbox" name="amenities" id="amenities">
+                              <label class="form-check-label amenities" for="flexSwitchCheckDefault1"><span id="label_amenity"></span></label>
                            </div>
                         </div>
                      </div>
@@ -112,7 +118,8 @@ $property = new Property($db);
                               </div></span>
                         <div class="d-flex justify-content-between">
                            <div class="form-check form-switch">                             
-                              <input class="form-check-input" type="checkbox" id="flexSwitchCheck">
+                              <input class="form-check-input" type="checkbox" name="common_area" id="common_area">
+                               <label class="form-check-label" for="common_area"><span id="label_common_area"></span></label>
                            </div>
                         </div>
                      </div>
@@ -122,7 +129,7 @@ $property = new Property($db);
                               </div></span>
                         <div class="d-flex justify-content-between">
                            <div class="form-check form-switch">                              
-                              <input class="form-check-input" type="checkbox" id="lifts">
+                              <input class="form-check-input" type="checkbox" name="lifts" id="lifts">
                               <label class="form-check-label" for="lifts">(6)</label>
                            </div>
                         </div>
@@ -137,7 +144,7 @@ $property = new Property($db);
                            </span>
                         <div class="d-flex justify-content-between">
                            <div class="form-check form-switch">                            
-                              <input class="form-check-input" type="checkbox" id="Parkingslots">
+                              <input class="form-check-input" type="checkbox" name="parking_slots" id="Parkingslots">
                               <label class="form-check-label" for="Parkingslots">(300)</label>
                            </div>
                         </div>
@@ -146,13 +153,13 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Other Amenities/Facilities</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input class="form-control" type="text" name="other_amenities" placeholder="Text">
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Unit Calculation Matrix</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input class="form-control" type="text" name="unit_matrix" placeholder="Text">
                         </div>
                      </div>
                   </div>
@@ -161,13 +168,13 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Unit/Shop Wise Offer Rate</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input class="form-control" type="text" name="unit_rate" id="unit_rate" placeholder="Text">
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Select Wing</span>
                         <div class="d-flex justify-content-between">
-                           <select id="selectwings" class="form-control">
+                           <select id="selectwings" class="form-control" name="select_wing">
                               <!-- <option value="0" selected>Select</option> -->
                               <option value="1" selected>Block A</option>
                               <option value="2">Block B</option>
@@ -184,7 +191,7 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Total Floors no.</span>
                         <div class="d-flex justify-content-between">
-                           <input id="totalFloorsInput" class="form-control" type="number" placeholder="Number" onchange="generateFloorRows()">
+                           <input id="totalFloorsInput" name="total_floor" class="form-control" type="number" placeholder="Number" onchange="generateFloorRows()">
                         </div>
                      </div>
                      <button class="add-field"><img src="../assets/images/icons/plus.svg" alt="" /> Add More Details</button>
@@ -194,75 +201,15 @@ $property = new Property($db);
                      <div class="field-box fileupload">
                         <div class="d-flex justify-content-center align-items-center">
                            <label for="formFile" class="form-label"><img src="../assets/images/icons/docupload.svg" alt="Profile" /> Upload Document</label>
-                           <input class="form-control" type="file" id="formFile">
+                           <input type="file" class="form-control" name="document_name[]" id="formFile" multiple="multiple" onchange="displaySelectedFile()">
                         </div>
                      </div>
                   </div>
-                  <div class="d-flex justify-content-between customerbox previewdetails mb-3">
-                     <div class="field-box">
-                        <div class="pdf-box d-flex justify-content-between">
-                           <div class="pdlfile-top d-flex align-items-center">
-                              <figure>
-                                 <img src="../assets/images/icons/FilePdf.svg" alt="File" />
-                              </figure>
-                              <figcaption>LeasingDocument.pdf</figcaption>
-                           </div>
-                           <div class="viewpdf-top d-flex align-items-center">
-                              <a href="#" class="viewpdf"><img src="../assets/images/icons/view.svg" alt="view" /></a>
-                              <a href="#" class="downloadpdf"><img src="../assets/images/icons/download.svg" alt="download" /></a>
-                           </div>
-                        </div>
-                        <a class="btn renewal-btn">For Renewal</a>
-                     </div>
-                     <div class="field-box">
-                        <div class="pdf-box d-flex justify-content-between">
-                           <div class="pdlfile-top d-flex align-items-center">
-                              <figure>
-                                 <img src="../assets/images/icons/FilePdf.svg" alt="File" />
-                              </figure>
-                              <figcaption>IDProof.pdf</figcaption>
-                           </div>
-                           <div class="viewpdf-top d-flex align-items-center">
-                              <a href="#" class="viewpdf"><img src="../assets/images/icons/view.svg" alt="view" /></a>
-                              <a href="#" class="downloadpdf"><img src="../assets/images/icons/download.svg" alt="download" /></a>
-                           </div>
-                        </div>
-                        <a class="btn renewal-btn">Tenant Details</a>
-                     </div>
-                     <div class="field-box">
-                        <div class="pdf-box d-flex justify-content-between">
-                           <div class="pdlfile-top d-flex align-items-center">
-                              <figure>
-                                 <img src="../assets/images/icons/FilePdf.svg" alt="File" />
-                              </figure>
-                              <figcaption>LightBill.pdf</figcaption>
-                           </div>
-                           <div class="viewpdf-top d-flex align-items-center">
-                              <a href="#" class="viewpdf"><img src="../assets/images/icons/view.svg" alt="view" /></a>
-                              <a href="#" class="downloadpdf"><img src="../assets/images/icons/download.svg" alt="download" /></a>
-                           </div>
-                        </div>
-                        <a class="btn renewal-btn">Previous Rental Proof</a>
-                     </div>
-                     <div class="field-box">
-                        <div class="pdf-box d-flex justify-content-between">
-                           <div class="pdlfile-top d-flex align-items-center">
-                              <figure>
-                                 <img src="../assets/images/icons/FilePdf.svg" alt="File" />
-                              </figure>
-                              <figcaption>RenewalReqequest.pdf</figcaption>
-                           </div>
-                           <div class="viewpdf-top d-flex align-items-center">
-                              <a href="#" class="viewpdf"><img src="../assets/images/icons/view.svg" alt="view" /></a>
-                              <a href="#" class="downloadpdf"><img src="../assets/images/icons/download.svg" alt="download" /></a>
-                           </div>
-                        </div>
-                        <a class="btn renewal-btn">Quote Mailed after Conformation</a>
-                     </div>
-                  </div>
+                   <div class="d-flex justify-content-between customerbox previewdetails mb-3" id="preview-container">
+                   </div>
                   <div class="field-box d-flex justify-content-end submit-btn">
                      <button type="button" class="btn btn-gray">Reset</button>
-                     <button type="button" class="btn btn-primary">Submit</button>
+                     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                   </div>
                </form>
             </div>
@@ -427,6 +374,26 @@ $property = new Property($db);
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
+    $(document).ready( function () {
+        /*-------------    Submit  data using javascript	   --------------------*/
+        $("#submit").click(function(){
+            var a = $("span").hasClass("invalid");
+
+            if(a == true){
+                swal({
+                    text: "Please Enter Valid Inputs",
+                    icon: "warning",
+                    dangerMode: true,
+                });
+                return false;
+            }
+            else{
+
+                document.getElementById('addProperty').action ="../controllers/PropertyController.php?f=create";
+
+            }
+        });
+    });
     $(document).ready(function (){
         $('input[name="property_type"]').on('change', function (){
             $('input[name="property_type"]').not(this).prop('checked', false);
@@ -453,4 +420,62 @@ $property = new Property($db);
             })
         });
     });
+    function displaySelectedFile() {
+        const input = document.getElementById('formFile');
+        if (input.files.length > 0) {
+            const filename = input.files[0].name;
+            const previewContainer = document.getElementById('preview-container');
+            // previewContainer.innerHTML = ""; // Clear previous entries
+
+            // Create a new element for each selected file
+            for (let i = 0; i < input.files.length; i++) {
+                const filename = input.files[i].name;
+                const pdfBox = document.createElement('div');
+                pdfBox.classList.add('pdf-box', 'd-flex', 'justify-content-between');
+
+                const pdlfileTop = document.createElement('div');
+                pdlfileTop.classList.add('pdlfile-top', 'd-flex', 'align-items-center');
+
+                const figure = document.createElement('figure');
+                const img = document.createElement('img');
+                img.src = "../assets/images/icons/FilePdf.svg";
+                img.alt = "File";
+                figure.appendChild(img);
+
+                const figcaption = document.createElement('figcaption');
+                figcaption.textContent = filename;
+
+                pdlfileTop.appendChild(figure);
+                pdlfileTop.appendChild(figcaption);
+
+                const viewpdfTop = document.createElement('div');
+                viewpdfTop.classList.add('viewpdf-top', 'd-flex', 'align-items-center');
+
+                const viewpdf = document.createElement('a');
+                viewpdf.classList.add('viewpdf');
+                const viewpdfImg = document.createElement('img');
+                viewpdfImg.src = "../assets/images/icons/view.svg";
+                viewpdfImg.alt = "view";
+                viewpdf.appendChild(viewpdfImg); // Can be linked to a document viewer script
+
+                const downloadpdf = document.createElement('a');
+                downloadpdf.classList.add('downloadpdf');
+                const downloadpdfImg = document.createElement('img');
+                downloadpdfImg.src = "../assets/images/icons/download.svg";
+                downloadpdfImg.alt = "download";
+                downloadpdf.appendChild(downloadpdfImg); // Can be linked to a download script
+
+                viewpdfTop.appendChild(viewpdf);
+                viewpdfTop.appendChild(downloadpdf);
+
+                pdfBox.appendChild(pdlfileTop);
+                pdfBox.appendChild(viewpdfTop);
+
+                previewContainer.appendChild(pdfBox);
+            }
+        } else {
+            // Handle no file selected case (optional)
+        }
+    }
+
 </script>
