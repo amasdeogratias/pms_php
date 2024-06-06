@@ -10,6 +10,25 @@ class Property
         $this->con = $db;
     }
 
+    public function add($data)
+    {
+        if(!empty($data) && is_array($data)){
+            foreach($data as $key => $value){
+                if(is_null($value) || $value == '')
+                    unset($data[$key]);
+            }
+
+            $fields = implode(",", array_keys($data));
+            $values = implode("','", array_values($data));
+            $query = "INSERT INTO property($fields) VALUES ('$values')";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 
     public function fetchPropertyType($property)
     {
@@ -31,5 +50,34 @@ class Property
             $results[] = $row;
         }
         return $results;
+    }
+
+    public function getId($name)
+    {
+        $query = "SELECT max(id ) as id FROM property";
+        $stmt = $this->con->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['id'];
+    }
+
+    public function addPropertyDocuments($data)
+    {
+        if(!empty($data) && is_array($data)){
+            foreach($data as $key => $value){
+                if(is_null($value) || $value == '')
+                    unset($data[$key]);
+            }
+
+            $fields = implode(",", array_keys($data));
+            $values = implode("','", array_values($data));
+            $query = "INSERT INTO propertydocument($fields) VALUES ('$values')";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
     }
 }
