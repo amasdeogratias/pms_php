@@ -145,7 +145,7 @@ $property = new Property($db);
                         <div class="d-flex justify-content-between">
                            <div class="form-check form-switch">                            
                               <input class="form-check-input" type="checkbox" name="parking_slots" id="Parkingslots">
-                              <label class="form-check-label" for="Parkingslots">(300)</label>
+                              <label class="form-check-label" for="Parkingslots"><span id="label_parking_slots"></label>
                            </div>
                         </div>
                      </div>
@@ -316,7 +316,7 @@ $property = new Property($db);
                                   <div class="field-box">
                                       <span>Parking/Slots Number</span>
                                       <div class="d-flex justify-content-between">
-                                          <input class="form-control" type="text" placeholder="Text">
+                                          <input type="text" class="form-control" id="parking_slot_value" placeholder="enter parking slot value">
                                       </div>
                                   </div>
                               </div>
@@ -497,6 +497,16 @@ $property = new Property($db);
         const values = inputs.value;
         document.getElementById('lifts').value = values;
         document.getElementById('label_lifts').textContent = values
+    }
+
+    const parkingInput = document.getElementById('parking_slot_value');
+    parkingInput.addEventListener('input', updateParkingSlotValue);
+
+    function updateParkingSlotValue(){
+        const parkingValue = document.querySelector('#parking_slot_value');
+        const values = parkingValue.value;
+        document.getElementById("Parkingslots").value = values;
+        document.getElementById('label_parking_slots').textContent=values
     }
 
 </script>
