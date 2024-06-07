@@ -255,15 +255,13 @@ $property = new Property($db);
                       <div class="modal-body">
                           <div class="inputscrollinmodal">
                               <div class="services  d-flex flex-wrap customerbox align-items-end">
-                                  <!-- <div class="field-box">
-                               <span>Total Floors no.</span>
-                               <div class="d-flex justify-content-between">
-                                  <input id="totalFloorsInput" class="form-control" type="text" placeholder="Text">
-                               </div>
-                            </div> -->
+                                 <div class="field-box">
+                                    <span>Common Area in sq feet.</span>
+                                   <div class="d-flex justify-content-between">
+                                      <input type="text" class="form-control" name="common_area" id="common_area_sqft" placeholder="Enter common area sq ft">
+                                   </div>
+                                </div>
                               </div>
-                              <button class="addMoreButton"><img src="../assets/images/icons/plus.svg" alt="" />Add More</button>
-
                           </div>
                           <div class="modal-footer">
                               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
@@ -476,6 +474,17 @@ $property = new Property($db);
         } else {
             // Handle no file selected case (optional)
         }
+    }
+
+    const input = document.getElementById("common_area_sqft");
+
+    input.addEventListener('input', updateCommonArea);
+    function updateCommonArea() {
+        const allInputs = document.querySelector('#common_area_sqft');
+        const values = allInputs.value;
+        const checkbox = document.getElementById('common_area');
+        checkbox.value = values;
+        document.getElementById('label_common_area').textContent = (values);
     }
 
 </script>
