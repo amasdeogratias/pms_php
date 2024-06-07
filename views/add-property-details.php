@@ -130,7 +130,7 @@ $property = new Property($db);
                         <div class="d-flex justify-content-between">
                            <div class="form-check form-switch">                              
                               <input class="form-check-input" type="checkbox" name="lifts" id="lifts">
-                              <label class="form-check-label" for="lifts">(6)</label>
+                              <label class="form-check-label" for="lifts"><span id="label_lifts"></label>
                            </div>
                         </div>
                      </div>
@@ -286,7 +286,7 @@ $property = new Property($db);
                                   <div class="field-box">
                                       <span>Total Lifts</span>
                                       <div class="d-flex justify-content-between">
-                                          <input class="form-control" type="text" placeholder="Text">
+                                          <input type="number" class="form-control" id="available_lifts" placeholder="Enter number of lifts available">
                                       </div>
                                   </div>
                               </div>
@@ -485,6 +485,18 @@ $property = new Property($db);
         const checkbox = document.getElementById('common_area');
         checkbox.value = values;
         document.getElementById('label_common_area').textContent = (values);
+    }
+
+    //available lifts
+    const liftModal = document.getElementById("available_lifts");
+
+    liftModal.addEventListener('input', updateLiftValue);
+
+    function updateLiftValue(){
+        const inputs = document.querySelector("#available_lifts");
+        const values = inputs.value;
+        document.getElementById('lifts').value = values;
+        document.getElementById('label_lifts').textContent = values
     }
 
 </script>
