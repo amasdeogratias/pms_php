@@ -65,7 +65,7 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Type of Property</span>
                         <div class="d-flex justify-content-between">
-                           <select class="form-control choices-multiple-remove-buttons" name="types_of_property" id="types_of_property" multiple>
+                           <select class="form-control choices-multiple-remove-buttons" name="types_of_property[]" id="types_of_property" multiple="multiple">
                            </select>
                         </div>
                      </div>
@@ -191,7 +191,7 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Total Floors no.</span>
                         <div class="d-flex justify-content-between">
-                           <input id="totalFloorsInput" name="total_floor" class="form-control" type="number" placeholder="Number" onchange="generateFloorRows()">
+                           <input type="number" class="form-control" name="total_floor" id="totalFloorsInput"  placeholder="Number" onchange="generateFloorRows()">
                         </div>
                      </div>
                      <button class="add-field"><img src="../assets/images/icons/plus.svg" alt="" /> Add More Details</button>
@@ -404,11 +404,11 @@ $property = new Property($db);
                 data: { property_type: propertyType },
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response)
+                    console.log(typeof(response))
                     $('#types_of_property').empty();
                     $.each(response, function(index, value) {
-                        // console.log("Appending option:", value.TypeOfProperty);
-                        $('#types_of_property').append('<option value="' + value.Id + '">' + value.TypeOfProperty + '</option>');
+                        console.log("Appending option:", value['TypeOfProperty']);
+                        $('#types_of_property').append('<option value="' + value['TypeOfProperty'] + '">' + value['TypeOfProperty'] + '</option>');
                     });
                 },
                 error: function(jqXHR, textStatus, errorThrown) {

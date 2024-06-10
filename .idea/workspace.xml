@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/add-property.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/add-property.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Property.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,6 +158,19 @@
       <workItem from="1717672888156" duration="1045000" />
       <workItem from="1717676716263" duration="1778000" />
       <workItem from="1717678647760" duration="1542000" />
+      <workItem from="1717680426234" duration="950000" />
+      <workItem from="1717743122474" duration="1784000" />
+      <workItem from="1717744945897" duration="2044000" />
+      <workItem from="1717747078742" duration="1818000" />
+      <workItem from="1717749092605" duration="1106000" />
+      <workItem from="1717752828811" duration="1180000" />
+      <workItem from="1717754722062" duration="594000" />
+      <workItem from="1717757682705" duration="784000" />
+      <workItem from="1717834642487" duration="1494000" />
+      <workItem from="1717836598740" duration="1919000" />
+      <workItem from="1717838605702" duration="1446000" />
+      <workItem from="1717999797029" duration="1674000" />
+      <workItem from="1718001558522" duration="331000" />
     </task>
     <servers />
   </component>

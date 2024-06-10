@@ -16,7 +16,7 @@ function create()
     try {
         $data = array(
             'property_type' => str_replace("'", "''", $_POST['property_type']),
-            'type_of_property' => str_replace("'", "''", $_POST['types_of_property']),
+            'type_of_property' => json_encode($_POST['types_of_property']),
             'property_name' => str_replace("'", "''", $_POST['property_name']),
             'location' => str_replace("'", "''", $_POST['address_location']),
             'total_area' => str_replace("'", "''", $_POST['total_area']),
