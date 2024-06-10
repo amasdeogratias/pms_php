@@ -76,13 +76,13 @@ function create()
 
 
         if($add_response) {
-            $_SESSION['message']='<div class="alert alert-success">Property added successfully!</div>';?>
+            $_SESSION['message']='success';?>
             <script>
                 window.history.back();
             </script>
             <?php
         } else{
-            $_SESSION['message']='<div class="alert alert-success">Problem in creating Property</div>';?>
+            $_SESSION['message']='error';?>
             <script>
                 window.history.back();
             </script>

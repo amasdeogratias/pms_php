@@ -26,6 +26,9 @@ if (!isset($_SESSION['userid'])) {
     <link rel="stylesheet" href="../assets/css/quotationslist.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/raise-questions.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/prospect-list.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
