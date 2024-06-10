@@ -9,7 +9,7 @@ require('../models/Auth.php');
 $database = new Database();
 $db = $database->connect();
 $authenticate = new Auth($db);
-$companies = $authenticate->getCompanies();
+$companies = $authenticate->getCompanies($_SESSION['userid']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
