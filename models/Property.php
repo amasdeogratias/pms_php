@@ -80,4 +80,44 @@ class Property
             return false;
         }
     }
+
+    public function addFloor($floorData)
+    {
+        if(!empty($floorData) && is_array($floorData)){
+            foreach($floorData as $key => $value){
+                if(is_null($value) || $value == '')
+                    unset($floorData[$key]);
+            }
+
+            $fields = implode(",", array_keys($floorData));
+            $values = implode("','", array_values($floorData));
+            $query = "INSERT INTO floordetails($fields) VALUES ('$values')";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
+    public function addShop($shopData)
+    {
+        if(!empty($shopData) && is_array($shopData)){
+            foreach($shopData as $key => $value){
+                if(is_null($value) || $value == '')
+                    unset($shopData[$key]);
+            }
+
+            $fields = implode(",", array_keys($shopData));
+            $values = implode("','", array_values($shopData));
+            $query = "INSERT INTO shopdetails($fields) VALUES ('$values')";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 }
