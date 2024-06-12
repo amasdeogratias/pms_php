@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +172,10 @@
       <workItem from="1717838605702" duration="1446000" />
       <workItem from="1717999797029" duration="1674000" />
       <workItem from="1718001558522" duration="1372000" />
+      <workItem from="1718112505116" duration="1812000" />
+      <workItem from="1718173986928" duration="1472000" />
+      <workItem from="1718176205515" duration="306000" />
+      <workItem from="1718178252932" duration="1336000" />
     </task>
     <servers />
   </component>

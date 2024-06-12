@@ -69,7 +69,7 @@
                      </div>
                      <div class="d-flex justify-content-between forgot">
                         <div class="form-check form-switch">
-                           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                           <input class="form-check-input" type="checkbox" name="remember_me" value="1" id="flexSwitchCheckDefault">
                            <label class="form-check-label" for="flexSwitchCheckDefault">Remember me</label>
                         </div>
                         <a href="#" id="forgotPasswordLink">Forgot password?</a>

@@ -19,6 +19,21 @@ class Auth
         return $stmt;
     }
 
+    public function updateRememberToken($userId, $token)
+    {
+        $query = "UPDATE usermaster SET RememberToken = ? WHERE Id = ?";
+        $stmt = $this->con->prepare($query);
+        return $stmt->execute([$token, $userId]);
+    }
+
+    public function getUserByRememberToken($token)
+    {
+        $query = "SELECT * FROM usermaster WHERE RememberToken = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->execute([$token]);
+        return $stmt;
+    }
+
     public function getCompanies($userId) {
         $stmt = $this->con->prepare("SELECT CompanyName FROM usermaster WHERE Id=:id GROUP BY CompanyName");
         $stmt->bindParam(':id', $userId, PDO::PARAM_STR);

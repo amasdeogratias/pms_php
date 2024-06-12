@@ -7,13 +7,18 @@ $database = new Database();
 $db = $database->connect();
 $authenticate = new Auth($db);
 
+
 function login()
 {
+    global $db;
     global $authenticate;
+//    checkRememberMe();
     try {
 
         $email = str_replace("'", "\'", $_POST['username_or_email']);
         $password = str_replace("'", "\'", $_POST['password']);
+
+        $rememberMe = isset($_POST['remember_me']) ? true : false;
 
         $response = $authenticate->login($email);
         $num = $response->rowCount();
@@ -36,19 +41,17 @@ function login()
                 $_SESSION['mobile']    = $mobile;
                 $_SESSION['company']    = $company;
 
-                if(!empty($_POST['sync_data'])) {
-                    ?>
-                    <script>
-                        window.location.href = "../sync/home.php"
-                    </script>
-                    <?php
-                } else {
-                    ?>
-                    <script>
-                        window.location.href = "../views/select-company.php"
-                    </script>
-                    <?php
+                if ($rememberMe) {
+                    $token = bin2hex(random_bytes(16));
+                    $authenticate->updateRememberToken($userId, $token);
+                    setcookie('remember_me', $token, time() + (86400 * 30), "/"); // 30 days expiration
                 }
+                ?>
+                <script>
+                    window.location.href = "../views/select-company.php"
+                </script>
+                <?php
+
 
             } else {
                 $_SESSION['message'] = 'password_error';
@@ -69,6 +72,36 @@ function login()
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }
+}
+
+
+function autoLogin()
+{
+    global $authenticate;
+
+    if (isset($_COOKIE['remember_me'])) {
+        $token = $_COOKIE['remember_me'];
+        $response = $authenticate->getUserByRememberToken($token);
+        $num = $response->rowCount();
+
+        if ($num > 0) {
+            $user = $response->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['userid'] = $user['Id'];
+            $_SESSION['username'] = $user['UserName'];
+            $_SESSION['email'] = $user['EmailId'];
+            $_SESSION['usertype'] = $user['UserType'];
+            $_SESSION['mobile'] = $user['MobileNo'];
+            $_SESSION['company'] = $user['CompanyName'];
+
+            return true; // User auto-logged in
+        }
+    }
+
+    return false; // No auto-login
+}
+session_start();
+if (!isset($_SESSION['userid'])) {
+    autoLogin();
 }
 
 function fetchCompany()
