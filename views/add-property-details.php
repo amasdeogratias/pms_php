@@ -213,7 +213,7 @@ $property = new Property($db);
                            <input type="number" class="form-control" name="total_floor" id="totalFloorsInput"  placeholder="Number" onchange="generateFloorRows()">
                         </div>
                      </div>
-                     <button class="add-field"><img src="../assets/images/icons/plus.svg" alt="" /> Add More Details</button>
+                      <button class="add-field"><img src="../assets/images/icons/plus.svg" alt="" /> Add More Details</button>
                   </div>
 
                   <div class="d-flex justify-content-between customerbox mb-3">
@@ -359,6 +359,7 @@ $property = new Property($db);
                           <h5 class="modal-title" id="exampleModalLabel0">Which Floor</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
+
                       <div class="modal-body">
                           <div class="opentypes" id="OpenTab">
                               <table class="table modaltable">
@@ -376,7 +377,7 @@ $property = new Property($db);
                           </div>
                       </div>
                       <div class="modal-footer" style="border-top:none;">
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                          <button type="button" id="transferDataBtn" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
                       </div>
                   </div>
               </div>
@@ -391,26 +392,93 @@ $property = new Property($db);
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
-    $(document).ready( function () {
-        /*-------------    Submit  data using javascript	   --------------------*/
-        $("#submit").click(function(){
+    $(document).ready(function () {
+        /*-------------    Submit data using JavaScript --------------------*/
+        $("#submit").click(function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
             var a = $("span").hasClass("invalid");
 
-            if(a == true){
+            if (a == true) {
                 swal({
                     text: "Please Enter Valid Inputs",
                     icon: "warning",
                     dangerMode: true,
                 });
                 return false;
-            }
-            else{
+            } else {
+                // Gather all form data including dynamically generated inputs
+                var formData = $("#addProperty").serializeArray();
 
-                document.getElementById('addProperty').action ="../controllers/PropertyController.php?f=create";
+                // Collect floor and shop details
+                $("tr").each(function () {
+                    var floorIndex = $(this).find("td[scope='row']").text();
+                    var propertyArea = $(this).find(".form-check-input:checked").val();
 
+                    var totalSqFit = $(this).find(".totalSqFitInput").val();
+                    console.log(totalSqFit)
+                    var shopDetails = [];
+
+                    $(this).nextUntil("tr:has(td[scope='row'])").each(function () {
+                        var shopNumber = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_number']").val();
+                        var shopSqFit = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_sqfit']").val();
+                        if (shopNumber && shopSqFit) {
+                            shopDetails.push({
+                                shop_number: shopNumber,
+                                shop_sqfit: shopSqFit
+                            });
+                        }
+                    });
+
+                    if (floorIndex && propertyArea) {
+                        formData.push({ name: "floor_" + floorIndex + "_property_area", value: propertyArea });
+                    }
+                    if (floorIndex && totalSqFit) {
+                        formData.push({ name: "floor_" + floorIndex + "_total_sqfit", value: totalSqFit });
+                        formData.push({ name: "floor_" + floorIndex + "_shops", value: JSON.stringify(shopDetails) });
+                    }
+                });
+
+                $.ajax({
+                    url: "../controllers/PropertyController.php?f=create",
+                    type: "POST",
+                    data: $.param(formData),
+                    success: function (response) {
+                        // Handle the response from the server
+                        if (response == 'success') {
+                            window.history.back();
+                        } else {
+                            alert('Error: ' + response);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert('Error: ' + textStatus + ' ' + errorThrown);
+                    }
+                });
             }
         });
     });
+
+    // $(document).ready( function () {
+    //     /*-------------    Submit  data using javascript	   --------------------*/
+    //     $("#submit").click(function(){
+    //         var a = $("span").hasClass("invalid");
+    //
+    //         if(a == true){
+    //             swal({
+    //                 text: "Please Enter Valid Inputs",
+    //                 icon: "warning",
+    //                 dangerMode: true,
+    //             });
+    //             return false;
+    //         }
+    //         else{
+    //
+    //             document.getElementById('addProperty').action ="../controllers/PropertyController.php?f=create";
+    //
+    //         }
+    //     });
+    // });
     $(document).ready(function (){
         $('input[name="property_type"]').on('change', function (){
             $('input[name="property_type"]').not(this).prop('checked', false);

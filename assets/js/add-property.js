@@ -31,9 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // modal open in floor no.
-document
-  .getElementById("totalFloorsInput")
-  .addEventListener("change", function () {
+document.getElementById("totalFloorsInput").addEventListener("change", function () {
     var totalFloors = this.value;
     // Open the modal when the input value changes
     if (totalFloors) {
@@ -64,18 +62,28 @@ function generateFloorRows() {
             <td>
                 <div class="d-flex align-items-center gap-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="Open${i}" onchange="toggleSubRows(this)">
+                        <input class="form-check-input" type="checkbox" value="Open" id="Open${i}" onchange="toggleSubRows(this)">
                         <label class="form-check-label" for="Open${i}"> Open </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="Prefixed${i}" onchange="toggleSubRows(this)">
+                        <input class="form-check-input" type="checkbox" value="Prefixed" id="Prefixed${i}" onchange="toggleSubRows(this)">
                         <label class="form-check-label" for="Prefixed${i}"> Prefixed </label>
                     </div>
                 </div>
             </td>
             <td>
-                <div class="totalSqFitText totalsq" style="display: none;"><div class="d-flex gap-2 align-items-center"><span>Total Sq.Fit</span> <input class="form-control totalSqFitInput" type="number" placeholder="Sqfit Value"></div></div>
-                <div class="shopText totalsq" style="display: none;"><div class="d-flex gap-2 align-items-center"><span>Shop</span> <input class="form-control totalSqFitInput" type="number" placeholder="Total Shop no." onchange="generateSubRows(this)"></div></div>                        
+                <div class="totalSqFitText totalsq" style="display: none;">
+                    <div class="d-flex gap-2 align-items-center">
+                        <span>Total Sq.Fit</span> 
+                        <input class="form-control totalSqFitInput" type="number" placeholder="Sqfit Value">
+                    </div>
+                </div>
+                <div class="shopText totalsq" style="display: none;">
+                    <div class="d-flex gap-2 align-items-center">
+                        <span>Shop</span> 
+                        <input class="form-control totalSqFitInput" type="number" name="floor_${i}_shop_count" placeholder="Total Shop no." onchange="generateSubRows(this)">
+                    </div>
+                </div>                        
             </td>
         </tr>
     `;
@@ -115,7 +123,7 @@ function toggleSubRows(checkbox) {
   }
 }
 
-function generateSubRows(input) {
+function generateSubRows(input,floorIndex) {
   var newValue = parseInt(input.value);
   var secondrow = input.closest("tr");
   var subRows = secondrow.querySelectorAll(".sub-row");
@@ -135,8 +143,8 @@ function generateSubRows(input) {
                                <td></td>
                                <td>
                                   <div class="d-flex gap-2">
-                                        <input class="form-control" style="width:70px" type="text" placeholder="Shop No.">
-                                        <input class="form-control" type="text" placeholder="Shop Sq. fit">
+                                        <input type="text" class="form-control" style="width:70px" name="floor_${floorIndex}_shop_${i}_number" placeholder="Shop No.">
+                                        <input type="text" class="form-control" name="floor_${floorIndex}_shop_${i}_sqfit" placeholder="Shop Sq. fit">
                                   </div>
                                </td>
                             </tr>
@@ -146,3 +154,24 @@ function generateSubRows(input) {
 }
 
 //  floor no end modal js
+// document.getElementById("floorForm").addEventListener("submit", function (e) {
+//   // Set total floors
+//   document.getElementById("total_floor").value = document.getElementById("totalFloorsInput").value;
+//
+//   var formData = new FormData(this);
+//
+//   fetch("../../views/add-property-details.php", {
+//     method: "POST",
+//     body: formData,
+//   })
+//       .then(response => response.text())
+//       .then(data => {
+//         console.log(data); // Handle response from PHP
+//         // Close the modal if needed
+//         var myModal = bootstrap.Modal.getInstance(document.getElementById("myModal2"));
+//         myModal.hide();
+//       })
+//       .catch(error => console.error("Error:", error));
+// });
+
+
