@@ -36,14 +36,51 @@ function create()
             'updated_by' => null,
             'updated_date' => null,
         );
-//        echo json_encode($data);P
+//        echo json_encode($data);
 //        exit;
-
         $add_response = $property->add($data);
         $property_id = $property->getId($_POST['property_name']);
 
+        $total_floors = $_POST['total_floor'];
+        $floorDetails = array();
+        for($i = 1; $i <= $total_floors; $i++){
+            $floor_number = $i;
+            $property_area = $_POST["floor_{$i}_property_area"];
+            $total_sqfit = $_POST["floor_{$i}_total_sqfit"];
+            $floorDetail = array(
+                'PropertyID' => $property_id,
+                'Wing' => str_replace("'", "''", $_POST['select_wing']),
+                'FloorNo' => $floor_number,
+                'PropertyArea' => $property_area,
+                'TotalSqFeet' => $total_sqfit,
+                'CreatedBy' => $_SESSION['username'],
+                'CreatedDate' => date('Y-m-d H:i:s'),
+                'UpdatedBy' => null,
+                'UpdatedDate' => null,
+            );
+            array_push($floorDetails, $floorDetail);
+        }
+        foreach ($floorDetails as $key => $detail){
+            $floorData = array(
+                'PropertyID' => $detail['PropertyID'],
+                'Wing' => $detail['Wing'],
+                'FloorNo' => $detail['FloorNo'],
+                'PropertyArea' => $detail['PropertyArea'],
+                'TotalSqFeet' => $detail['TotalSqFeet'],
+                'CreatedBy' => $_SESSION['username'],
+                'CreatedDate' => date('Y-m-d H:i:s'),
+                'UpdatedBy' => null,
+                'UpdatedDate' => null,
+            );
+            $property->addFloor($floorData);
+        }
+//        echo json_encode($floorDetails);
+//        exit;
+
+
         $files = $_FILES['document_name']['name'];
-        foreach ($files as $key => $file) {
+        if(!empty($files)){
+            foreach ($files as $key => $file) {
             $Files = array(
                 'property_id' => $property_id,
                 'document' => $file, // Pass document content here
@@ -72,7 +109,7 @@ function create()
                 exit;
             }
         }
-
+        }
 
 
         if($add_response) {

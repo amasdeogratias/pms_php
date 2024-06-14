@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/add-property.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/add-property.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +176,22 @@
       <workItem from="1718173986928" duration="1472000" />
       <workItem from="1718176205515" duration="306000" />
       <workItem from="1718178252932" duration="1336000" />
+      <workItem from="1718181930728" duration="1154000" />
+      <workItem from="1718183786357" duration="1840000" />
+      <workItem from="1718189291043" duration="1744000" />
+      <workItem from="1718191072929" duration="1779000" />
+      <workItem from="1718192957463" duration="1742000" />
+      <workItem from="1718194805102" duration="1649000" />
+      <workItem from="1718196989543" duration="1810000" />
+      <workItem from="1718260119731" duration="1693000" />
+      <workItem from="1718261852929" duration="564000" />
+      <workItem from="1718278325035" duration="1351000" />
+      <workItem from="1718279853348" duration="1719000" />
+      <workItem from="1718283139544" duration="2063000" />
+      <workItem from="1718285247237" duration="1413000" />
+      <workItem from="1718346380945" duration="942000" />
+      <workItem from="1718348396845" duration="1542000" />
+      <workItem from="1718350201459" duration="440000" />
     </task>
     <servers />
   </component>
