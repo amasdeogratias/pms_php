@@ -43,10 +43,11 @@ function create()
 
         $total_floors = $_POST['total_floor'];
         $floorDetails = array();
+//        $shopDetails = array();
         for($i = 1; $i <= $total_floors; $i++){
             $floor_number = $i;
             $property_area = $_POST["floor_{$i}_property_area"];
-            $total_sqfit = $_POST["floor_{$i}_total_sqfit"];
+            $total_sqfit = $_POST["floor_{$i}_total_sqfit"] ?? null;
             $floorDetail = array(
                 'PropertyID' => $property_id,
                 'Wing' => str_replace("'", "''", $_POST['select_wing']),
@@ -59,7 +60,32 @@ function create()
                 'UpdatedDate' => null,
             );
             array_push($floorDetails, $floorDetail);
+
+
+            // Handle shop details
+            if (isset($_POST["floor_{$i}_shop_number"])) {
+                $shopNumbers = $_POST["floor_{$i}_shop_number"];
+                $shopSqFits = $_POST["floor_{$i}_shop_sqfit"];
+
+                foreach ($shopNumbers as $index => $shopNumber) {
+                    $shopSqFit = $shopSqFits[$index];
+
+                    $shopDetail = array(
+                        'PropertyId' => $property_id,
+                        'Wing' => str_replace("'", "''", $_POST['select_wing']),
+                        'FloorNo' => $floor_number,
+                        'ShopNo' => $shopNumber,
+                        'ShopSqtFit' => $shopSqFit,
+                        'CreatedBy' => $_SESSION['username'],
+                        'CreatedDate' => date('Y-m-d H:i:s'),
+                        'UpdatedBy' => null,
+                        'UpdatedDate' => null
+                    );
+                    $property->addShop($shopDetail);
+                }
+            }
         }
+
         foreach ($floorDetails as $key => $detail){
             $floorData = array(
                 'PropertyID' => $detail['PropertyID'],
@@ -74,12 +100,11 @@ function create()
             );
             $property->addFloor($floorData);
         }
-//        echo json_encode($floorDetails);
-//        exit;
 
 
-        $files = $_FILES['document_name']['name'];
-        if(!empty($files)){
+
+        if(!empty($_FILES['document_name']['name'])){
+            $files = $_FILES['document_name']['name'];
             foreach ($files as $key => $file) {
             $Files = array(
                 'property_id' => $property_id,

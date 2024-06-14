@@ -416,27 +416,29 @@ $property = new Property($db);
                     var propertyArea = $(this).find(".form-check-input:checked").val();
 
                     var totalSqFit = $(this).find(".totalSqFitInput").val();
-                    console.log(totalSqFit)
-                    var shopDetails = [];
+                    console.log(propertyArea)
 
-                    $(this).nextUntil("tr:has(td[scope='row'])").each(function () {
-                        var shopNumber = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_number']").val();
-                        var shopSqFit = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_sqfit']").val();
-                        if (shopNumber && shopSqFit) {
-                            shopDetails.push({
-                                shop_number: shopNumber,
-                                shop_sqfit: shopSqFit
-                            });
-                        }
-                    });
 
                     if (floorIndex && propertyArea) {
                         formData.push({ name: "floor_" + floorIndex + "_property_area", value: propertyArea });
                     }
                     if (floorIndex && totalSqFit) {
                         formData.push({ name: "floor_" + floorIndex + "_total_sqfit", value: totalSqFit });
-                        formData.push({ name: "floor_" + floorIndex + "_shops", value: JSON.stringify(shopDetails) });
+                        // formData.push({ name: "floor_" + floorIndex + "_shops", value: JSON.stringify(shopDetails) });
                     }
+
+                    $(this).nextUntil("tr:has(td[scope='row'])").each(function () {
+                        var shopNumber = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_number']").val();
+                        var shopSqFit = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_sqfit']").val();
+                        if (shopNumber && shopSqFit) {
+                            formData.push({ name: "floor_" + floorIndex + "_shop_number[]", value: shopNumber });
+                            formData.push({ name: "floor_" + floorIndex + "_shop_sqfit[]", value: shopSqFit });
+                            // shopDetails.push({
+                            //     shop_number: shopNumber,
+                            //     shop_sqfit: shopSqFit
+                            // });
+                        }
+                    });
                 });
 
                 $.ajax({

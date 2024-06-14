@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/add-property.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/add-property.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PropertyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
     </list>
@@ -191,7 +190,10 @@
       <workItem from="1718285247237" duration="1413000" />
       <workItem from="1718346380945" duration="942000" />
       <workItem from="1718348396845" duration="1542000" />
-      <workItem from="1718350201459" duration="440000" />
+      <workItem from="1718350201459" duration="1780000" />
+      <workItem from="1718352049709" duration="1744000" />
+      <workItem from="1718353823483" duration="1846000" />
+      <workItem from="1718356211836" duration="1778000" />
     </task>
     <servers />
   </component>
