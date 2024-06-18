@@ -21,14 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/IBSOutline.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/Profile-1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/Saurabh_Shanbhag_Resume.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/Thong_Nguyen_Resume.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/product_details.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/products (1).pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/queries (6).sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents/query_queue.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +208,12 @@
       <workItem from="1718693904709" duration="1734000" />
       <workItem from="1718695835384" duration="756000" />
       <workItem from="1718698093862" duration="1724000" />
-      <workItem from="1718701427440" duration="1369000" />
+      <workItem from="1718701427440" duration="1689000" />
+      <workItem from="1718703710735" duration="1887000" />
+      <workItem from="1718710275682" duration="210000" />
+      <workItem from="1718711815416" duration="204000" />
+      <workItem from="1718712540684" duration="179000" />
+      <workItem from="1718713504875" duration="603000" />
     </task>
     <servers />
   </component>

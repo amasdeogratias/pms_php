@@ -397,11 +397,19 @@ $property = new Property($db);
         $("#submit").click(function (event) {
             event.preventDefault(); // Prevent the default form submission
 
-            var a = $("span").hasClass("invalid");
+            var property = $("#types_of_property").val();
+            var property_name = $("#property_name").val();
 
-            if (a == true) {
+            if (property == "") {
                 swal({
-                    text: "Please Enter Valid Inputs",
+                    text: "Please Enter Valid property type",
+                    icon: "warning",
+                    dangerMode: true,
+                });
+                return false;
+            } else if(property_name == ""){
+                swal({
+                    text: "Please Enter Valid Property name",
                     icon: "warning",
                     dangerMode: true,
                 });
