@@ -84,14 +84,14 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Type of Property</span>
                         <div class="d-flex justify-content-between">
-                           <select class="form-control choices-multiple-remove-buttons" name="types_of_property[]" id="types_of_property" multiple="multiple">
+                           <select class="form-control choices-multiple-remove-buttons" name="types_of_property[]" id="types_of_property" multiple="multiple" required>
                            </select>
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Name of Property</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" name="property_name" id="property_name" placeholder="Enter property name">
+                           <input class="form-control" type="text" name="property_name" id="property_name" placeholder="Enter property name" required>
                         </div>
                      </div>
                   </div>
@@ -107,7 +107,7 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Total Area</span>
                         <div class="d-flex justify-content-between">
-                           <input type="number" class="form-control" name="total_area" id="total_area" placeholder="Enter total area">
+                           <input type="number" class="form-control" name="total_area" id="total_area" placeholder="Enter total area" required>
                         </div>
                      </div>
                      <div class="field-box">
@@ -228,7 +228,7 @@ $property = new Property($db);
                    </div>
                   <div class="field-box d-flex justify-content-end submit-btn">
                      <button type="button" class="btn btn-gray">Reset</button>
-                     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                     <button type="button" id="submit" class="btn btn-primary">Submit</button>
                   </div>
                </form>
             </div>
@@ -408,7 +408,8 @@ $property = new Property($db);
                 return false;
             } else {
                 // Gather all form data including dynamically generated inputs
-                var formData = $("#addProperty").serializeArray();
+                // var form = $("#addProperty").serializeArray();
+                var formData = new FormData($("#addProperty")[0]);
 
                 // Collect floor and shop details
                 $("tr").each(function () {
@@ -416,71 +417,50 @@ $property = new Property($db);
                     var propertyArea = $(this).find(".form-check-input:checked").val();
 
                     var totalSqFit = $(this).find(".totalSqFitInput").val();
-                    console.log(propertyArea)
-
 
                     if (floorIndex && propertyArea) {
-                        formData.push({ name: "floor_" + floorIndex + "_property_area", value: propertyArea });
+                        formData.append("floor_" + floorIndex + "_property_area", propertyArea);
                     }
                     if (floorIndex && totalSqFit) {
-                        formData.push({ name: "floor_" + floorIndex + "_total_sqfit", value: totalSqFit });
-                        // formData.push({ name: "floor_" + floorIndex + "_shops", value: JSON.stringify(shopDetails) });
+                        formData.append("floor_" + floorIndex + "_total_sqfit", totalSqFit);
                     }
 
                     $(this).nextUntil("tr:has(td[scope='row'])").each(function () {
                         var shopNumber = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_number']").val();
                         var shopSqFit = $(this).find("input[name^='floor_'][name*='_shop_'][name$='_sqfit']").val();
                         if (shopNumber && shopSqFit) {
-                            formData.push({ name: "floor_" + floorIndex + "_shop_number[]", value: shopNumber });
-                            formData.push({ name: "floor_" + floorIndex + "_shop_sqfit[]", value: shopSqFit });
-                            // shopDetails.push({
-                            //     shop_number: shopNumber,
-                            //     shop_sqfit: shopSqFit
-                            // });
+                            formData.append("floor_" + floorIndex + "_shop_number[]", shopNumber);
+                            formData.append("floor_" + floorIndex + "_shop_sqfit[]", shopSqFit);
                         }
                     });
+                });
+                formData.forEach((value, key) => {
+                    console.log(key + ": " + value);
                 });
 
                 $.ajax({
                     url: "../controllers/PropertyController.php?f=create",
                     type: "POST",
-                    data: $.param(formData),
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     success: function (response) {
+                        console.log(response)
                         // Handle the response from the server
-                        if (response == 'success') {
-                            window.history.back();
-                        } else {
-                            alert('Error: ' + response);
-                        }
+                       if(response){
+                           location.reload();
+                       }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        alert('Error: ' + textStatus + ' ' + errorThrown);
+                        console.error("AJAX error:", textStatus, errorThrown);
                     }
                 });
             }
         });
     });
 
-    // $(document).ready( function () {
-    //     /*-------------    Submit  data using javascript	   --------------------*/
-    //     $("#submit").click(function(){
-    //         var a = $("span").hasClass("invalid");
-    //
-    //         if(a == true){
-    //             swal({
-    //                 text: "Please Enter Valid Inputs",
-    //                 icon: "warning",
-    //                 dangerMode: true,
-    //             });
-    //             return false;
-    //         }
-    //         else{
-    //
-    //             document.getElementById('addProperty').action ="../controllers/PropertyController.php?f=create";
-    //
-    //         }
-    //     });
-    // });
     $(document).ready(function (){
         $('input[name="property_type"]').on('change', function (){
             $('input[name="property_type"]').not(this).prop('checked', false);
