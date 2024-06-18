@@ -102,9 +102,8 @@ function create()
         }
 
 
-
-        if(!empty($_FILES['document_name']['name'])){
-            $files = $_FILES['document_name']['name'];
+        $files = $_FILES['document_name']['name'];
+        if(!$files){
             foreach ($files as $key => $file) {
             $Files = array(
                 'property_id' => $property_id,
