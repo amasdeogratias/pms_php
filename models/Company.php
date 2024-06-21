@@ -10,6 +10,18 @@ class Company
         $this->con = $db;
     }
 
+    public function fetch()
+    {
+        $query = "SELECT * FROM company GROUP BY Id";
+        $stmt  = $this->con->prepare($query);
+        $stmt->execute();
+        $list = array();
+        while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $list[] = $rows;
+        }
+        return $list;
+    }
+
 
     public function add($data)
     {
