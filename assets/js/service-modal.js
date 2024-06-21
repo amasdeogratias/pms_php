@@ -120,7 +120,7 @@ $(document).ready(function() {
 
     function updateAnemitiesValue() {
         const allInputs = document.querySelectorAll('.services .form-control');
-        const values = Array.from(allInputs).map(input => input.value).join(', ');
+        const values = Array.from(allInputs).map(input => input.value).filter(value => value.trim() !== "").join(",");
         const checkbox = document.getElementById('amenities');
         checkbox.value = values;
         document.getElementById('label_amenity').textContent = (values);
