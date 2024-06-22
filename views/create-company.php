@@ -19,10 +19,29 @@ include '../partials/header.php';
     <div class="quotationslist-main">
         <h4>
             <?php
-            if(isset($_SESSION['message'])) {
-                echo $_SESSION['message'];
+            if (isset($_SESSION['message'])) {
+                if ($_SESSION['message'] == 'success') {
+                    echo '<script>
+                                swal({
+                                    title: "Success!",
+                                    text: "Company added successfully!",
+                                    icon: "success",
+                                    confirmButtonText: "OK"
+                                });
+                            </script>';
+                } elseif ($_SESSION['message'] == 'username_error') {
+                    echo '<script>
+                            swal({
+                                title: "Error!",
+                                text: "Problem in creating company",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            });
+                        </script>';
+                }
                 unset($_SESSION['message']);
-            }?>
+            }
+            ?>
         </h4>
         <!-- <h2>Individual Property Overview</h2> -->
         <div class="form-main">

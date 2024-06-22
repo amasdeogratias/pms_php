@@ -76,8 +76,8 @@ function create()
             }
         }
 
+        $userInput = $_POST['username_or_email'];
         if (!empty($_POST['username_or_email'])){
-            $userInput = $_POST['username_or_email'];
 
             // Validate the input (optional, but recommended)
             $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
@@ -100,13 +100,13 @@ function create()
 
         $add_response = $company->add($data);
         if($add_response) {
-            $_SESSION['message']='<div class="alert alert-success">Company added successfully!</div>';?>
+            $_SESSION['message']='success';?>
             <script>
                 window.history.back();
             </script>
             <?php
         } else{
-            $_SESSION['message']='<div class="alert alert-success">Problem in creating company</div>';?>
+            $_SESSION['message']='error';?>
             <script>
                 window.history.back();
             </script>
