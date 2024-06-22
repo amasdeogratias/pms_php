@@ -57,7 +57,7 @@ $companies = $company->fetch();
                     <td><?php echo $row["MobileNo"]; ?></td>
                     <td>
                         <div class="d-flex justify-content-between">
-                            <a href="edit-company.php?f=<?php echo $row['Id'];?>" class="btn btn-info btn-group-sm"> Edit</a>
+                            <a href="edit-company.php?company_name=<?php echo $row['CompanyName'];?>" class="btn btn-info btn-group-sm"> Edit</a>
                         </div>
                     </td>
                 </tr>
