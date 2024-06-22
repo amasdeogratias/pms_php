@@ -22,6 +22,19 @@ class Company
         return $list;
     }
 
+    public function fetchUserCompanyData($company_name)
+    {
+        $query = "SELECT * FROM company LEFT JOIN usermaster ON company.CompanyName= usermaster.CompanyName WHERE company.CompanyName=:company";
+        $stmt  = $this->con->prepare($query);
+        $stmt->bindParam(':company', $company_name, PDO::PARAM_STR);
+        $stmt->execute();
+        $list = array();
+        while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $list[] = $rows;
+        }
+        return $list;
+    }
+
 
     public function add($data)
     {
