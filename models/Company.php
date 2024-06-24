@@ -81,10 +81,10 @@ class Company
             $total_data = count($data);
             $update_query = "";
             foreach ($data as $columns => $values){
-                $update_query .= "$columns= '$values'";
                 if ($values == "" || $values == null){
                     $total_data --;
                 }else{
+                    $update_query .= "$columns= '$values'";
                     if($total_data > 1){
                         $update_query .= ",";
                         $total_data --;
@@ -111,10 +111,10 @@ class Company
             $total_data = count($data);
             $update_query = "";
             foreach ($data as $columns => $values){
-                $update_query .= "$columns= '$values'";
                 if ($values == "" || $values == null){
                     $total_data --;
                 }else{
+                    $update_query .= "$columns= '$values'";
                     if($total_data > 1){
                         $update_query .= ",";
                         $total_data --;
