@@ -74,6 +74,66 @@ class Company
             return false;
         }
     }
+
+    public function update($data, $company)
+    {
+        if(!empty($data) && is_array($data)){
+            $total_data = count($data);
+            $update_query = "";
+            foreach ($data as $columns => $values){
+                $update_query .= "$columns= '$values'";
+                if ($values == "" || $values == null){
+                    $total_data --;
+                }else{
+                    if($total_data > 1){
+                        $update_query .= ",";
+                        $total_data --;
+                    }
+                }
+
+            }
+
+            //update query
+            $update_query = rtrim($update_query, ',');
+            $query = "UPDATE company SET $update_query WHERE CompanyName='$company'";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
+    public function updateUser($data, $company)
+    {
+        if(!empty($data) && is_array($data)){
+            $total_data = count($data);
+            $update_query = "";
+            foreach ($data as $columns => $values){
+                $update_query .= "$columns= '$values'";
+                if ($values == "" || $values == null){
+                    $total_data --;
+                }else{
+                    if($total_data > 1){
+                        $update_query .= ",";
+                        $total_data --;
+                    }
+                }
+
+            }
+
+            //update query
+            $update_query = rtrim($update_query, ',');
+            $query = "UPDATE usermaster SET $update_query WHERE CompanyName='$company'";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 }
 
 
