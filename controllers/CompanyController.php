@@ -149,15 +149,15 @@ function update()
 
         $UserDetails = array();
         $formDetails = array();
-        if (!empty($_POST['userNameOrEmail'])){
-            for($i = 0; $i < count($_POST['userNameOrEmail']); $i++) {
-                $userInput = $_POST['userNameOrEmail'][$i];
+        if (!empty($_POST['userName']) && !empty($_POST['userEmail'])){
+            for($i = 0; $i < count($_POST['userEmail']); $i++) {
+                $userInput = $_POST['userName'][$i];
 
                 // Validate the input (optional, but recommended)
-                $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
+                $isValidEmail = filter_var($_POST['userEmail'][$i], FILTER_VALIDATE_EMAIL);
                 $UserDetails = array(
-                    'UserName' => !$isValidEmail ? $userInput : NULL,
-                    'EmailId' =>  $isValidEmail ? $userInput : NULL,
+                    'UserName' => $userInput,
+                    'EmailId' =>  $isValidEmail,
                     'Password' => $_POST['userPassword'][$i],
                     'UserType' => str_replace("'", "''", $_POST['userType'][$i]),
                     'CompanyName' => str_replace("'", "''", $_POST['company_name']),
@@ -187,13 +187,13 @@ function update()
         }
 
         $userInput = $_POST['username_or_email'];
-        if (!empty($_POST['username_or_email'])){
+        if (!empty($_POST['username_or_email']) && !empty($_POST['user_email'])){
 
             // Validate the input (optional, but recommended)
-            $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
+            $isValidEmail = filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL);
             $formDetails= array(
-                'UserName' => !$isValidEmail ? $userInput : NULL,
-                'EmailId' => $isValidEmail ? $userInput : NULL,
+                'UserName' => $userInput,
+                'EmailId' => $_POST['user_email'],
                 'MobileNo' => '',
                 'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 'UserType' => str_replace("'", "''", $_POST['usertype']),
@@ -212,9 +212,7 @@ function update()
         if($add_response) {
             $_SESSION['message']='success';?>
             <script>
-                setTimeout({
-                    location.href = '../views/company-list.php';
-                },3000);
+                location.href = '../views/company-list.php';
             </script>
             <?php
         } else{

@@ -153,8 +153,14 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                             </td>
                             <td>
                                 <div class="field-box" style="width: 100%;">
+                                    <span>User Name</span>
+                                    <input type="text"class="form-control" style="border: none;" name="userName[]" id="alias" value="<?php echo $val['UserName'];?>">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="field-box" style="width: 100%;">
                                     <span>User Email Id</span>
-                                    <input type="text"class="form-control" style="border: none;" name="userNameOrEmail[]" id="alias" value="<?php echo ($val['UserName']!=null) ? $val['UserName'] : $val['EmailId'];?>">
+                                    <input type="text"class="form-control" style="border: none;" name="userEmail[]" id="alias" value="<?php echo $val['EmailId'];?>">
                                 </div>
                             </td>
                             <td>
@@ -183,9 +189,15 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                         </div>
                     </div>
                     <div class="field-box">
-                        <span>User Email/User Name</span>
+                        <span>User Name</span>
                         <div class="d-flex justify-content-between">
-                            <input type="text" class="form-control" name="username_or_email" id="username_or_email" placeholder="Enter username or username">
+                            <input type="text" class="form-control" name="username_or_email" id="username_or_email" placeholder="Enter username">
+                        </div>
+                    </div>
+                    <div class="field-box">
+                        <span>User Email</span>
+                        <div class="d-flex justify-content-between">
+                            <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="field-box">
@@ -234,7 +246,8 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
         const addedUsers = [];
         function addUser() {
             const usertype = document.getElementById('usertype').value.trim();
-            const userEmail = document.getElementById('username_or_email').value.trim();
+            const userName = document.getElementById('username_or_email').value.trim();
+            const userEmail = document.getElementById('user_email').value.trim();
             const password = document.getElementById('password').value.trim();
 
             if ((usertype === '' || userEmail === '' || password ==='')) {
@@ -271,8 +284,14 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
 					</div>
 				<td>
 					<div class="field-box" style="width: 100%;">
+						<span>User Name</span>
+						<input type="text"class="form-control" style="border: none;" name="userName[]" id="alias" value="${userName}">
+					</div>
+				</td>
+<td>
+					<div class="field-box" style="width: 100%;">
 						<span>User Email Id</span>
-						<input type="text"class="form-control" style="border: none;" name="userNameOrEmail[]" id="alias" value="${userEmail}">
+						<input type="text"class="form-control" style="border: none;" name="userEmail[]" id="alias" value="${userEmail}">
 					</div>
 				</td>
                 <td>
