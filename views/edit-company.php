@@ -26,10 +26,29 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
     <div class="quotationslist-main">
         <h4>
             <?php
-            if(isset($_SESSION['message'])) {
-                echo $_SESSION['message'];
+            if (isset($_SESSION['message'])) {
+                if ($_SESSION['message'] == 'success') {
+                    echo '<script>
+                                swal({
+                                    title: "Success!",
+                                    text: "Company updated successfully!",
+                                    icon: "success",
+                                    confirmButtonText: "OK"
+                                });
+                            </script>';
+                } elseif ($_SESSION['message'] == 'username_error') {
+                    echo '<script>
+                            swal({
+                                title: "Error!",
+                                text: "Problem in updating company",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            });
+                        </script>';
+                }
                 unset($_SESSION['message']);
-            }?>
+            }
+            ?>
         </h4>
         <!-- <h2>Individual Property Overview</h2> -->
         <div class="form-main">
@@ -41,6 +60,7 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                             <input type="text" class="form-control" name="company_name" id="company_name" value="<?php echo $companies[0]['CompanyName'] ?>"  placeholder="Enter company name" required>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" name="company" id="company" value="<?php echo $_GET['company_name']; ?>"  placeholder="Enter company name" required>
                     <div class="field-box">
                         <span>Mailing Name</span>
                         <div class="d-flex justify-content-between">
@@ -98,7 +118,7 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                     <div class="field-box">
                         <span>Email Id</span>
                         <div class="d-flex justify-content-between">
-                            <input type="email" class="form-control" name="email" id="email" value="<?php echo $companies[0]['EmailId'] ?>" placeholder="Enter email" required>
+                            <input type="email" class="form-control" name="email" id="email" value="<?php echo $companies[0]['Email'] ?>" placeholder="Enter email" required>
                         </div>
                         <small class="email_validate" style="color: red"></small>
                     </div>
@@ -134,13 +154,13 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                             <td>
                                 <div class="field-box" style="width: 100%;">
                                     <span>User Email Id</span>
-                                    <input type="text"class="form-control" style="border: none;" name="userNameOrEmail[]" id="alias" value="<?php echo $val['UserType'];?>">
+                                    <input type="text"class="form-control" style="border: none;" name="userNameOrEmail[]" id="alias" value="<?php echo ($val['UserName']!=null) ? $val['UserName'] : $val['EmailId'];?>">
                                 </div>
                             </td>
                             <td>
                                 <div class="field-box" style="width: 100%;">
                                     <span>User Password</span>
-                                    <input type="password" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="<?php echo $val['UserType'];?>">
+                                    <input type="password" class="form-control" style="border: none;" name="userPassword[]" id="alias" value="<?php echo $val['Password'];?>">
                                 </div>
                             </td>
                             <td><span type="button" class="btn-sm addUser" onclick="removeUser(this)" style="width:100%;height:100%">x</span></td>
@@ -179,7 +199,7 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
 
                 <div class="field-box d-flex justify-content-end submit-btn">
                     <button type="button" class="btn btn-gray">Reset</button>
-                    <button type="submit" id="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>
@@ -206,7 +226,7 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                 }
                 else{
 
-                    document.getElementById('createCompany').action ="../controllers/CompanyController.php?f=create";
+                    document.getElementById('createCompany').action ="../controllers/CompanyController.php?f=update";
 
                 }
             });
