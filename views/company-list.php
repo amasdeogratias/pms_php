@@ -53,7 +53,7 @@ $companies = $company->fetch();
                     <td><?php echo $row["Address"]; ?></td>
                     <td><?php echo $row["District"]; ?></td>
                     <td><?php echo $row["Country"]; ?></td>
-                    <td><?php echo $row["EmailId"]; ?></td>
+                    <td><?php echo $row["Email"]; ?></td>
                     <td><?php echo $row["MobileNo"]; ?></td>
                     <td>
                         <div class="d-flex justify-content-between">

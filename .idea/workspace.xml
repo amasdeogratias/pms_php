@@ -22,7 +22,8 @@
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/create-company.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/create-company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/company-list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/company-list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/edit-company.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/edit-company.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +224,18 @@
       <workItem from="1719037771940" duration="1516000" />
       <workItem from="1719040228838" duration="1706000" />
       <workItem from="1719043417459" duration="1942000" />
-      <workItem from="1719046720423" duration="512000" />
+      <workItem from="1719046720423" duration="1498000" />
+      <workItem from="1719211745284" duration="1426000" />
+      <workItem from="1719213638174" duration="662000" />
+      <workItem from="1719215412395" duration="1779000" />
+      <workItem from="1719217452210" duration="2029000" />
+      <workItem from="1719220087976" duration="1665000" />
+      <workItem from="1719227561325" duration="1718000" />
+      <workItem from="1719229405242" duration="1229000" />
+      <workItem from="1719231252216" duration="1770000" />
+      <workItem from="1719233072712" duration="1768000" />
+      <workItem from="1719235395183" duration="1185000" />
+      <workItem from="1719298017907" duration="596000" />
     </task>
     <servers />
   </component>
