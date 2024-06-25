@@ -102,37 +102,32 @@ function create()
         }
 
 
-        $files = $_FILES['document_name']['name'];
-        if(!$files){
-            foreach ($files as $key => $file) {
-            $Files = array(
-                'property_id' => $property_id,
-                'document' => $file, // Pass document content here
-                'company_name' => str_replace("'", "''", $_SESSION['company']),
-                'CreatedBy' => $_SESSION['username'],
-                'CreatedDate' => date('Y-m-d H:i:s'),
-                'UpdatedBy' => null,
-                'UpdatedDate' => null,
-            );
+        if (isset($_FILES['document_name'])) {
+            $files = $_FILES['document_name'];
 
-            $property->addPropertyDocuments($Files);
+            foreach ($files['name'] as $key => $file) {
+                $tmp_name = $files['tmp_name'][$key];
+                $filename = $files['name'][$key];
+                $destination = "../documents/" . $filename; // Change path as needed
 
-            $tmp_name = $_FILES['document_name']['tmp_name'][$key];
-            $filename = $_FILES['document_name']['name'][$key];
-            $destination = "../documents/" . $filename; // Change path as needed
+                if (move_uploaded_file($tmp_name, $destination)) {
+                    $fileData = array(
+                        'property_id' => $property_id,
+                        'document' => $filename,
+                        'company_name' => str_replace("'", "''", $_SESSION['company']),
+                        'CreatedBy' => $_SESSION['username'],
+                        'CreatedDate' => date('Y-m-d H:i:s'),
+                        'UpdatedBy' => null,
+                        'UpdatedDate' => null,
+                    );
 
-
-            // Move uploaded file to a designated location
-            if (move_uploaded_file($tmp_name, $destination) === false) {
-                $_SESSION['message'] = '<div class="alert alert-warning">There was some error moving the file to upload directory.</div>';
-                ?>
-                <script>
-                    window.history.back();
-                </script>
-                <?php
-                exit;
+                    $property->addPropertyDocuments($fileData);
+                } else {
+                    $_SESSION['message'] = '<div class="alert alert-warning">There was an error moving the file to the upload directory.</div>';
+                    echo '<script>window.history.back();</script>';
+                    exit;
+                }
             }
-        }
         }
 
 
