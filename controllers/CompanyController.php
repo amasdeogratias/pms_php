@@ -24,7 +24,7 @@ function create()
             'TelephoneNo' => str_replace("'", "''", $_POST['telephone']),
             'MobileNo' => str_replace("'", "''", $_POST['mobile']),
             'FaxNo' => str_replace("'", "''", $_POST['fax']),
-            'EmailId' => str_replace("'", "''", $_POST['email']),
+            'Email' => str_replace("'", "''", $_POST['email']),
             'Website' => str_replace("'", "''", $_POST['website']),
             'CompanyStartDate' => str_replace("'", "''", $_POST['start_date']),
             'CreatedBy' => $_SESSION['username'],
@@ -35,15 +35,15 @@ function create()
 
         $UserDetails = array();
         $formDetails = array();
-        if (!empty($_POST['userNameOrEmail'])){
-            for($i = 0; $i < count($_POST['userNameOrEmail']); $i++) {
-                $userInput = $_POST['userNameOrEmail'][$i];
+        if (!empty($_POST['userName'])){
+            for($i = 0; $i < count($_POST['userName']); $i++) {
+                $userInput = $_POST['userName'][$i];
 
                 // Validate the input (optional, but recommended)
-                $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
+                $isValidEmail = filter_var($_POST['userEmail'][$i], FILTER_VALIDATE_EMAIL);
                 $UserDetails = array(
-                        'UserName' => !$isValidEmail ? $userInput : NULL,
-                        'EmailId' =>  $isValidEmail ? $userInput : NULL,
+                        'UserName' => $userInput,
+                        'EmailId' =>  $isValidEmail,
                         'MobileNo' => '',
                         'Password' => $_POST['userPassword'][$i],
                         'UserType' => str_replace("'", "''", $_POST['userType'][$i]),
@@ -56,8 +56,8 @@ function create()
                 $output[] = array_merge($UserDetails);
             }
 
-            //        echo json_encode($output);
-            //        exit;
+//                    echo json_encode($output);
+//                    exit;
             foreach ($output as $val) {
                 $userData = array(
                     'UserName' => str_replace("'", "''", $val['UserName']),
@@ -80,10 +80,10 @@ function create()
         if (!empty($_POST['username_or_email'])){
 
             // Validate the input (optional, but recommended)
-            $isValidEmail = filter_var($userInput, FILTER_VALIDATE_EMAIL);
+            $isValidEmail = filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL);
             $formDetails= array(
-                'UserName' => !$isValidEmail ? $userInput : NULL,
-                'EmailId' => $isValidEmail ? $userInput : NULL,
+                'UserName' => $userInput,
+                'EmailId' => $isValidEmail,
                 'MobileNo' => '',
                 'Password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 'UserType' => str_replace("'", "''", $_POST['usertype']),
