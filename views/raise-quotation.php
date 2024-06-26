@@ -9,7 +9,7 @@ include '../partials/header.php';
                <h1>Raise New Quotation</h1>
             </div>
             <div class="customer d-flex align-items-center">
-               <a href="index.php" class="logout">
+               <a href="../controllers/AuthController.php?f=Logout" class="logout">
                   <img src="../assets/images/icons/logout.svg" alt="Logout" />
                </a>
                <a href="#" class="profile">
@@ -19,19 +19,19 @@ include '../partials/header.php';
          </header>
          <div class="quotationslist-main">
             <div class="form-main">
-               <form class="quotationform">
+               <form class="quotationform" method="post" id="addQuotation" enctype="multipart/form-data">
                   <div class="d-flex justify-content-between customerbox mb-3">
                      <div class="field-box">
                         <span>Type of Customer</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="NewCustomer">
+                              <input type="checkbox" class="form-check-input" name="customer_type" id="NewCustomer" value="New Customer" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="NewCustomer">
                                  New Customer
                               </label>
                            </div>
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="existingCustomer">
+                              <input type="checkbox" class="form-check-input" name="customer_type" id="existingCustomer" value="Existing Customer" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="existingCustomer">
                                  Existing Customer
                               </label>
@@ -39,15 +39,15 @@ include '../partials/header.php';
                         </div>
                      </div>
                      <div class="field-box">
-                        <span>To</span>
+                        <span>Quotation Date</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="date">
+                           <input type="date" class="form-control" name="quotation_date" id="quotation_date">
                         </div>
                      </div>
                      <div class="field-box">
                         <span> Name of Customer</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Enter customer name" required>
                         </div>
                      </div>
                   </div>
@@ -55,19 +55,19 @@ include '../partials/header.php';
                      <div class="field-box">
                         <span>Customer Address</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="text" class="form-control" name="customer_address" id="customer_address" placeholder="Enter customer address">
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Contact Person</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="text" class="form-control" name="contact_person" id="contact_person" placeholder="Enter contact person">
                         </div>
                      </div>
                      <div class="field-box">
                         <span>Type of Unit Offered</span>
                         <div class="d-flex justify-content-between">
-                           <select id="Offered" class="form-control">
+                           <select name="unit_type" id="Offered" class="form-control">
                               <option value="1" selected>Select</option>
                               <option value="2">Office</option>
                               <option value="3">Company 2</option>
@@ -81,7 +81,7 @@ include '../partials/header.php';
                         <span>Select Floor</span>
                         <div class="d-flex justify-content-between">
 
-                           <select id="SelectFloor" class="form-control">
+                           <select id="SelectFloor" name="floor" class="form-control">
                               <option value="1" selected>Floor no.</option>
                               <option value="2">Floor 1</option>
                               <option value="3">Floor 2</option>
@@ -93,13 +93,13 @@ include '../partials/header.php';
                         <span>Types of Property</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Open"  onclick="toggleFields('Open')" />
+                              <input class="form-check-input" type="checkbox" name="property_type" value="Open" id="Open"  onclick="toggleFields('Open')" />
                               <label class="form-check-label" for="Open">
                                 Open 
                               </label>
                            </div>
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Prefixed"  onclick="toggleFields('Prefixed')" />
+                              <input class="form-check-input" type="checkbox" name="property_type" value="Prefixed" id="Prefixed"  onclick="toggleFields('Prefixed')" />
                               <label class="form-check-label" for="Prefixed">
                               Prefixed
                               </label>
@@ -110,13 +110,13 @@ include '../partials/header.php';
                         <span>Renewal</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="yes">
+                              <input type="checkbox" class="form-check-input" name="renewal" value="Yes" id="yes" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="yes">
                                  Yes
                               </label>
                            </div>
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="no">
+                              <input type="checkbox" class="form-check-input" name="renewal" value="No" id="no" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="no">
                                  No
                               </label>
@@ -129,14 +129,14 @@ include '../partials/header.php';
                   <div class="field-box">
                         <span id="availableLabel">Available Sq.fit</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="2000" disabled>
+                           <input type="text" class="form-control" name="available_sqfit" id="available_sqfit" placeholder="2000" disabled>
                         </div>
                      </div> 
 
                   <div class="field-box">
                         <span>Sq.fit Requested by Customer for Lease</span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="text" placeholder="Text">
+                           <input type="text" class="form-control" name="customer_sqfit_lease" id="customer_sqfit_lease" placeholder="Enter sq.fit for lease to customer">
                         </div>
                      </div>
                     
@@ -144,7 +144,7 @@ include '../partials/header.php';
                      <div class="field-box">
                         <span id="availabRate">Rate Per Sq.fit</span>
                         <div class="d-flex justify-content-between">
-                         <input class="form-control" type="text" placeholder="Text">
+                         <input type="text" class="form-control" name="rate_per_sqfit" id="rate_per_sqfit" placeholder="Enter rate per sq fit">
                         </div>                       
                      </div>
                     
@@ -154,7 +154,7 @@ include '../partials/header.php';
                   <div class="field-box">
                         <span>Total Amount </span>
                         <div class="d-flex justify-content-between">
-                        <input class="form-control" type="text" placeholder="Text">
+                        <input type="number" class="form-control" name="total_amount" id="total_amount" placeholder="Enter total amount">
                         </div>
                      </div>
 
@@ -162,13 +162,13 @@ include '../partials/header.php';
                         <span>Provision Increase or Decrease Rent</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Increase">
+                              <input type="checkbox" class="form-check-input" name="rent_increase_decrease" id="Increase" value="Increase" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="Increase">
                                  Increase
                               </label>
                            </div>
                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="Decrease">
+                              <input type="checkbox" class="form-check-input" name="rent_increase_decrease" id="Decrease" value="Decrease" onclick="uncheckOther(this)">
                               <label class="form-check-label" for="Decrease">
                                  Decrease
                               </label>
@@ -178,7 +178,7 @@ include '../partials/header.php';
                      <div class="field-box">
                         <span>From </span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="date">
+                           <input type="date" class="form-control" name="rent_from">
                         </div>
                      </div>                    
                   </div>
@@ -186,7 +186,7 @@ include '../partials/header.php';
                   <div class="field-box">
                         <span>To </span>
                         <div class="d-flex justify-content-between">
-                           <input class="form-control" type="date">
+                           <input type="date" class="form-control" name="rent_to">
                         </div>
                      </div>
                   </div>

@@ -270,6 +270,7 @@ $companies = $company->fetchUserCompanyData($_GET['company_name']);
                 return;
             }
             addedUsers.push(usertype)
+            addedUsers.push(userName)
             addedUsers.push(userEmail)
             addedUsers.push(password)
 
