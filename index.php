@@ -72,7 +72,7 @@
                            <input class="form-check-input" type="checkbox" name="remember_me" value="1" id="flexSwitchCheckDefault">
                            <label class="form-check-label" for="flexSwitchCheckDefault">Remember me</label>
                         </div>
-                        <a href="#" id="forgotPasswordLink">Forgot password?</a>
+                        <a href="forget-password.php" id="forgotPasswordLinks">Forgot password?</a>
                      </div>
                      <div class="col-auto">
                         <button type="submit" class="btn btn-primary full-width">Login</button>
