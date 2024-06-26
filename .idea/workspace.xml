@@ -20,20 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/forget-password.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Quotation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Estate360.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Estate360.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/edit-company.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/edit-company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/raise-quotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/raise-quotation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+    </include_path>
   </component>
   <component name="ProjectId" id="2guNxKIFxqGSnlIFEi7JcmElPnu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -46,7 +57,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../payroll_sagera" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../crm_" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -239,6 +250,16 @@
       <workItem from="1719301640965" duration="1776000" />
       <workItem from="1719304549534" duration="1806000" />
       <workItem from="1719306639654" duration="652000" />
+      <workItem from="1719314265789" duration="1027000" />
+      <workItem from="1719322882880" duration="1232000" />
+      <workItem from="1719383396348" duration="1184000" />
+      <workItem from="1719385479247" duration="1775000" />
+      <workItem from="1719387293932" duration="1781000" />
+      <workItem from="1719389126512" duration="1640000" />
+      <workItem from="1719391032425" duration="1730000" />
+      <workItem from="1719392865852" duration="1713000" />
+      <workItem from="1719394630333" duration="1773000" />
+      <workItem from="1719398274459" duration="756000" />
     </task>
     <servers />
   </component>
@@ -262,17 +283,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1716554506670" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1717145553682">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1719385900129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1717145553682" />
-    <state x="775" y="243" key="NewPhpClassDialog" timestamp="1717153571586">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1719385900129" />
+    <state x="775" y="243" key="NewPhpClassDialog" timestamp="1719387032175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="775" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1717153571586" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1717154076782">
+    <state x="775" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1719387032175" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1719393071744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1717154076782" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1719393071744" />
   </component>
 </project>
