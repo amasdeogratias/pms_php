@@ -18,6 +18,32 @@ include '../partials/header.php';
             </div>
          </header>
          <div class="quotationslist-main">
+             <h4>
+                 <?php
+                 if (isset($_SESSION['message'])) {
+                     if ($_SESSION['message'] == 'success') {
+                         echo '<script>
+                                swal({
+                                    title: "Success!",
+                                    text: "Quotation created successfully!",
+                                    icon: "success",
+                                    confirmButtonText: "OK"
+                                });
+                            </script>';
+                     } elseif ($_SESSION['message'] == 'username_error') {
+                         echo '<script>
+                            swal({
+                                title: "Error!",
+                                text: "Problem in creating Quotati",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            });
+                        </script>';
+                     }
+                     unset($_SESSION['message']);
+                 }
+                 ?>
+             </h4>
             <div class="form-main">
                <form class="quotationform" method="post" id="addQuotation" enctype="multipart/form-data">
                   <div class="d-flex justify-content-between customerbox mb-3">
@@ -110,13 +136,13 @@ include '../partials/header.php';
                         <span>Renewal</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="renewal" value="Yes" id="yes" onclick="uncheckOther(this)">
+                              <input type="checkbox" class="form-check-input" name="renewal" value="Yes" id="yes">
                               <label class="form-check-label" for="yes">
                                  Yes
                               </label>
                            </div>
                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="renewal" value="No" id="no" onclick="uncheckOther(this)">
+                              <input type="checkbox" class="form-check-input" name="renewal" value="No" id="no">
                               <label class="form-check-label" for="no">
                                  No
                               </label>
@@ -129,7 +155,7 @@ include '../partials/header.php';
                   <div class="field-box">
                         <span id="availableLabel">Available Sq.fit</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="available_sqfit" id="available_sqfit" placeholder="2000" disabled>
+                           <input type="text" class="form-control" name="available_sqfit" id="available_sqfit" placeholder="2000" readonly>
                         </div>
                      </div> 
 
@@ -162,13 +188,13 @@ include '../partials/header.php';
                         <span>Provision Increase or Decrease Rent</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="rent_increase_decrease" id="Increase" value="Increase" onclick="uncheckOther(this)">
+                              <input type="checkbox" class="form-check-input" name="rent_increase_decrease" id="Increase" value="Increase" onclick="toggleFields('Increase')">
                               <label class="form-check-label" for="Increase">
                                  Increase
                               </label>
                            </div>
                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="rent_increase_decrease" id="Decrease" value="Decrease" onclick="uncheckOther(this)">
+                              <input type="checkbox" class="form-check-input" name="rent_increase_decrease" id="Decrease" value="Decrease" onclick="toggleFields('Decrease')">
                               <label class="form-check-label" for="Decrease">
                                  Decrease
                               </label>
@@ -192,7 +218,7 @@ include '../partials/header.php';
                   </div>
                   <div class="field-box d-flex justify-content-end submit-btn">
                      <button type="button" class="btn btn-gray">Reset</button>
-                     <button type="button" class="btn btn-dark">Send</button>
+                     <button type="submit" id="submit" class="btn btn-dark">Send</button>
                   </div>
                </form>
             </div>
@@ -240,5 +266,23 @@ include '../partials/header.php';
   document.addEventListener('DOMContentLoaded', () => {
     const availableLabel = document.getElementById('availableLabel');
     availableLabel.textContent = 'Available Sq.fit';
+  });
+  $(document).ready(function (){
+      $("#submit").click(function(){
+          var a = $("span").hasClass("invalid");
+
+          if(a == true){
+              swal({
+                  text: "Please Enter Valid Inputs",
+                  icon: "warning",
+                  dangerMode: true,
+              });
+              return false;
+          }
+          else{
+              document.getElementById('addQuotation').action='../controllers/QuotationController.php?f=createQuotation';
+          }
+      });
+
   });
 </script>
