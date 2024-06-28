@@ -113,7 +113,7 @@ $property = new Property($db);
                      <div class="field-box">
                         <span>Floor/Units</span>
                         <div class="d-flex justify-content-between">
-                           <input type="number" class="form-control" name="floor_or_units" id="floor_or_units" placeholder="Enter floor/units">
+                           <input type="text" class="form-control" name="floor_or_units" id="floor_or_units" placeholder="Enter floor/units">
                         </div>
                      </div>
                   </div>
@@ -195,14 +195,14 @@ $property = new Property($db);
                         <div class="d-flex justify-content-between">
                            <select id="selectwings" class="form-control" name="select_wing">
                               <!-- <option value="0" selected>Select</option> -->
-                              <option value="1" selected>Block A</option>
-                              <option value="2">Block B</option>
-                              <option value="3">Block C</option>
-                              <option value="4">Block D</option>
-                              <option value="5">Block E</option>
-                              <option value="6">Block F</option>
-                              <option value="7">Block G</option>
-                              <option value="8">Block H</option>
+                              <option value="Block A" selected>Block A</option>
+                              <option value="Block B">Block B</option>
+                              <option value="Block C">Block C</option>
+                              <option value="Block D">Block D</option>
+                              <option value="Block E">Block E</option>
+                              <option value="Block F">Block F</option>
+                              <option value="Block G">Block G</option>
+                              <option value="Block H">Block H</option>
                            </select>
                         </div>
                      </div>
