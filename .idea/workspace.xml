@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/QuotationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Quotation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/QuotationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/QuotationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Quotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Quotation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/raise-quotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/raise-quotation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -266,6 +267,15 @@
       <workItem from="1719471151862" duration="1757000" />
       <workItem from="1719475070455" duration="1856000" />
       <workItem from="1719476966962" duration="1709000" />
+      <workItem from="1719478802136" duration="1634000" />
+      <workItem from="1719480804932" duration="2596000" />
+      <workItem from="1719488025080" duration="1874000" />
+      <workItem from="1719494910331" duration="1633000" />
+      <workItem from="1719496909603" duration="34000" />
+      <workItem from="1719557535299" duration="761000" />
+      <workItem from="1719560525214" duration="1915000" />
+      <workItem from="1719562535762" duration="1728000" />
+      <workItem from="1719564993404" duration="69000" />
     </task>
     <servers />
   </component>

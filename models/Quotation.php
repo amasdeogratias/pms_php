@@ -31,4 +31,21 @@ class Quotation
             return false;
         }
     }
+
+    public function fetchCustomer()
+    {
+        try {
+            $query = "SELECT NameOfCustomer FROM quotation GROUP BY NameOfCustomer";
+            $stmt  = $this->conn->prepare($query);
+            $list = array();
+            $stmt->execute();
+            while($rows = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $list[] = $rows;
+            }
+            return $list;
+
+        }catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
 }

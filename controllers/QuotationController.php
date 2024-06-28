@@ -18,7 +18,7 @@ function createQuotation()
         $Quotation = array(
             "TypeOfCustomer" => $_POST['customer_type'],
             "QuotationDate" => $_POST['quotation_date'],
-            "NameOfCustomer" => $_POST['customer_name'],
+            "NameOfCustomer" => ($_POST['customer_name']=='') ? $_POST['select_customer_name'] : $_POST['customer_name'],
             "CustomerAddress" => $_POST['customer_address'],
             "ContactPerson" => $_POST['contact_person'],
             "TypeOfUnitOffered" => $_POST['unit_type'],

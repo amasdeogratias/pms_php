@@ -1,6 +1,17 @@
 <?php
 $subtitle = "Generate Quotation";
 include '../partials/header.php';
+require '../database/connection.php';
+require '../models/Quotation.php';
+
+$database = new Database();
+$db = $database->connect();
+
+$quotation = new Quotation($db);
+$customers = $quotation->fetchCustomer();
+//echo json_encode($customers);
+//exit;
+
 ?>
       <div class="dashboard-main">
          <header class="d-flex justify-content-between align-items-center">
@@ -51,13 +62,13 @@ include '../partials/header.php';
                         <span>Type of Customer</span>
                         <div class="d-flex checkgap">
                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="customer_type" id="NewCustomer" value="New Customer" onclick="uncheckOther(this)">
+                              <input type="checkbox" class="form-check-input" name="customer_type" id="NewCustomer" value="New Customer" onclick="uncheckCustomer(this)">
                               <label class="form-check-label" for="NewCustomer">
                                  New Customer
                               </label>
                            </div>
                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" name="customer_type" id="existingCustomer" value="Existing Customer" onclick="uncheckOther(this)">
+                              <input type="checkbox" class="form-check-input" name="customer_type" id="existingCustomer" value="Existing Customer" onclick="uncheckCustomer(this)">
                               <label class="form-check-label" for="existingCustomer">
                                  Existing Customer
                               </label>
@@ -70,10 +81,22 @@ include '../partials/header.php';
                            <input type="date" class="form-control" name="quotation_date" id="quotation_date">
                         </div>
                      </div>
-                     <div class="field-box">
+                     <div class="field-box hidden" id="existingCustomerSelect">
                         <span> Name of Customer</span>
                         <div class="d-flex justify-content-between">
-                           <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Enter customer name" required>
+                           <select class="form-control" name="select_customer_name" id="select_customer_name">
+                                <?php
+                                    foreach ($customers as $key => $values){
+                                ?>
+                               <option value="<?php echo $values['NameOfCustomer'] ;?>"><?php echo $values['NameOfCustomer']; ?></option>
+                               <?php } ?>
+                           </select>
+                        </div>
+                     </div>
+                      <div class="field-box hidden" id="newCustomerInput">
+                        <span> Name of Customer</span>
+                        <div class="d-flex justify-content-between">
+                           <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Enter customer name">
                         </div>
                      </div>
                   </div>
@@ -226,6 +249,11 @@ include '../partials/header.php';
       </div>
 
 <?php include ('../partials/footer.php'); ?>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
       <script>
          new SlimSelect({
             select: "#Offered",
@@ -285,4 +313,24 @@ include '../partials/header.php';
       });
 
   });
+
+  function uncheckCustomer(checkbox) {
+      const newCustomerInput = document.getElementById('newCustomerInput');
+      const existingCustomerSelect = document.getElementById('existingCustomerSelect');
+      const newCustomerCheckbox = document.getElementById('NewCustomer');
+      const existingCustomerCheckbox = document.getElementById('existingCustomer');
+
+      if (checkbox.id === 'NewCustomer' && checkbox.checked) {
+          existingCustomerCheckbox.checked = false;
+          newCustomerInput.classList.remove('hidden');
+          existingCustomerSelect.classList.add('hidden');
+      } else if (checkbox.id === 'existingCustomer' && checkbox.checked) {
+          newCustomerCheckbox.checked = false;
+          newCustomerInput.classList.add('hidden');
+          existingCustomerSelect.classList.remove('hidden');
+      } else {
+          newCustomerInput.classList.add('hidden');
+          existingCustomerSelect.classList.add('hidden');
+      }
+  }
 </script>
