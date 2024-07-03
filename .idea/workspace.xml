@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="71c4a0d5-7cd2-4737-b547-abeebac236b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/QuotationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/QuotationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Quotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Quotation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/add-property-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-property-details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/add-property.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/add-property.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/raise-quotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/raise-quotation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -276,6 +274,24 @@
       <workItem from="1719560525214" duration="1915000" />
       <workItem from="1719562535762" duration="1728000" />
       <workItem from="1719564993404" duration="69000" />
+      <workItem from="1719565850498" duration="1314000" />
+      <workItem from="1719575632085" duration="1178000" />
+      <workItem from="1719642301246" duration="4389000" />
+      <workItem from="1719646990247" duration="1223000" />
+      <workItem from="1719649151346" duration="1259000" />
+      <workItem from="1719815695061" duration="1297000" />
+      <workItem from="1719818479014" duration="1785000" />
+      <workItem from="1719820380520" duration="1557000" />
+      <workItem from="1719822325824" duration="1784000" />
+      <workItem from="1719824212846" duration="589000" />
+      <workItem from="1719836136028" duration="705000" />
+      <workItem from="1719917450245" duration="1268000" />
+      <workItem from="1719920246772" duration="769000" />
+      <workItem from="1719924542922" duration="1182000" />
+      <workItem from="1719926495201" duration="1368000" />
+      <workItem from="1719988254669" duration="591000" />
+      <workItem from="1719990135962" duration="2150000" />
+      <workItem from="1719992791169" duration="696000" />
     </task>
     <servers />
   </component>

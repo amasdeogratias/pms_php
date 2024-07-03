@@ -126,17 +126,22 @@ function toggleSubRows(checkbox) {
 function generateSubRows(input,floorIndex) {
   var newValue = parseInt(input.value);
   var secondrow = input.closest("tr");
-  var subRows = secondrow.querySelectorAll(".sub-row");
+  var subRows = secondrow.nextElementSibling;
 
   // Remove extra sub-rows if the new value is less than the number of existing sub-rows
-  if (newValue < subRows.length) {
-    for (var i = subRows.length; i > newValue; i--) {
-      subRows[i - 1].remove();
-    }
+  // if (newValue < subRows.length) {
+  //   for (var i = subRows.length; i > newValue; i--) {
+  //     subRows[i - 1].remove();
+  //   }
+  // }
+  while(subRows && subRows.classList.contains("sub-row")){
+    var temp = subRows.nextElementSibling;
+    subRows.remove();
+    subRows = temp;
   }
 
   // Generate new subrows based on the updated input value
-  for (var i = subRows.length + 1; i <= newValue; i++) {
+  for (var i = 1; i <= newValue; i++) {
     var subRow = `
                             <tr class="sub-row">
                                <td></td>
@@ -150,6 +155,7 @@ function generateSubRows(input,floorIndex) {
                             </tr>
                       `;
     secondrow.insertAdjacentHTML("afterend", subRow);
+    secondrow = secondrow.nextElementSibling;
   }
 }
 

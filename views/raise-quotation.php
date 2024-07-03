@@ -117,10 +117,10 @@ $customers = $quotation->fetchCustomer();
                         <span>Type of Unit Offered</span>
                         <div class="d-flex justify-content-between">
                            <select name="unit_type" id="Offered" class="form-control">
-                              <option value="1" selected>Select</option>
-                              <option value="2">Office</option>
-                              <option value="3">Company 2</option>
-                              <option value="4">Company 3</option>
+                               <option selected>Floor no.</option>
+                               <option value="1">Floor 1</option>
+                               <option value="2">Floor 2</option>
+                               <option value="3">Floor 3</option>
                            </select>
                         </div>
                      </div>
