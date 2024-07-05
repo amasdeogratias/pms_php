@@ -1,75 +1,3 @@
-<?php
-error_reporting(E_ALL);
-session_start();
-
-$conn = mysqli_connect('localhost', 'root', '', 'estate360');
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-
-
-if (isset($_POST['password-reset-token'])) {
-    $selector = $_POST['selector'];
-    $validator = $_POST['validator'];
-    $password = $_POST['password'];
-    $passwordRepeat = $_POST['confirm_password'];
-
-    if ($password !== $passwordRepeat) {
-        echo "Passwords do not match.";
-        exit();
-    }
-
-    $currentDate = date("U");
-
-    $sql = "SELECT * FROM reset_password WHERE pwdResetSelector = ? AND pwdResetExpires >= ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $selector, $currentDate);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        $tokenBin = hex2bin($validator);
-        $tokenCheck = password_verify($tokenBin, $row['pwdResetToken']);
-
-        if ($tokenCheck === false) {
-            echo "You need to re-submit your reset request.";
-            exit();
-        } else {
-            $tokenEmail = $row['pwdResetEmail'];
-            $sqli = "SELECT * FROM usermaster WHERE EmailId = ?";
-            $stmt_res = mysqli_prepare($conn, $sqli);
-            mysqli_stmt_bind_param($stmt_res, "s", $tokenEmail);
-            mysqli_stmt_execute($stmt_res);
-            $result_res = mysqli_stmt_get_result($stmt_res);
-
-            if (mysqli_num_rows($result_res) > 0) {
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                $sql_update = "UPDATE usermaster SET Password = ? WHERE EmailId = ?";
-                $stmt_update = mysqli_prepare($conn, $sql_update);
-                mysqli_stmt_bind_param($stmt_update, "ss", $hashedPassword, $tokenEmail);
-                $sql_result = mysqli_stmt_execute($stmt_update);
-
-                if ($sql_result) {
-                    ?>
-                    <script>alert("Password was successfully reset");</script>
-                    <?php
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    ?>
-                    <script>alert("Error resetting password.");</script>
-                    <?php
-                    header("Location: index.php");
-                    exit();
-                }
-            }
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,19 +29,10 @@ if (isset($_POST['password-reset-token'])) {
                     <img src="assets/images/login-logo.svg" class="img-fluid" alt="login" />
                     <span>Estate360</span>
                 </div>
-                <h6 class="text-center mt-3">
-                    <?php
-
-                    if (isset($_SESSION['message'])) {
-                        echo $_SESSION['message'];
-                        unset($_SESSION['message']);
-                    }
-                    ?>
-                </h6>
-                <form class="login-form mt-3" method="post" action="reset-password.php">
+                <form class="login-form mt-3" action="reset-password-logic.php" method="POST">
                     <div class="login-formhide">
-                        <input type="hidden" class="form-control" name="selector" value="<?php echo $selector ?>">
-                        <input type="hidden" class="form-control" name="validator" value="<?php echo $validator ?>">
+                        <input type="hidden" class="form-control" name="selector" value="<?php echo $_GET['selector'] ?>">
+                        <input type="hidden" class="form-control" name="validator" value="<?php echo $_GET['validator'] ?>">
 
                         <div class="form-field mb-4">
                             <label for="password" class="form-label">Password</label>
@@ -126,14 +45,11 @@ if (isset($_POST['password-reset-token'])) {
                             <span><img src="assets/images/icons/eye.svg" alt="eye" /></span>
                         </div>
                         <small id="showMessage"></small>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary full-width">Login</button>
-                        </div>
                     </div>
 
-                    <div class="login-reset" style="display: none;">
+                    <div class="login-reset">
                         <div class="col-auto">
-                            <button type="submit" name="password-reset-token" id="resetPasswordButton" class="btn btn-primary full-width">Reset Password</button>
+                            <button type="submit" name="submit" id="resetPasswordButton" class="btn btn-primary full-width">Reset Password</button>
                         </div>
                     </div>
                 </form>
